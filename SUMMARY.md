@@ -1,5 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [First Chapter](chapter1.md)
+* [Data Exfiltration](chapter1.md)
+  * [ICMP](chapter1/icmp.md)
+  * [Esoteric](chapter1/esoteric.md)
 

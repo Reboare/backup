@@ -8,7 +8,7 @@ We can exfiltrate arbitrary data via literally nothing but error-codes.  Here I'
 
 An error code can have a maximum length of 32 bits, or 4 bytes.  We can therefore encode 4 arbitrary bytes within the return of a windows command.
 
-We have data stored within`$env:temp/merror.txt`  and the only parameter we need to know is it's length.  We can run an arbitrary command, store it's output in the file and find out its length by running the following:  
+We have data stored within`$env:temp/merror.txt`  and the only parameter we need to know is it's length.  We can run an arbitrary command, store it's output in the file and find out its length by running the following:
 
 ```powershell
 $command = (Invoke-Command -ScriptBlock {{{0}}} | Out-String).TrimStart().TrimEnd(); $command | Out-File $env:temp/merror.txt -encoding ASCII ;exit $command.length'.format(command)

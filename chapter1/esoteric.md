@@ -1,6 +1,6 @@
 # Esoteric Data Exfiltration
 
-This is a dumping for less common but still quite interesting Exfiltration methods.  These probably won't be too useful in anything but the most specific instances, but who knows, they might fit what you're looking for.
+This is a dumping for less common but still quite interesting exfiltration methods.  These probably won't be too useful in anything but the most specific instances, but who knows, they might fit what you're looking for.
 
 ## Error Codes
 

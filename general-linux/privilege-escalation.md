@@ -85,6 +85,9 @@ int main( int argc, char *argv[] )
 
 You could also just generate a binary using msfvenom if desired, but this will require the `PrependSetuid=True` if spawning a `/bin/bash` shell.
 
+**Further Reading**:  
+[NFS, no\_root\_squash and SUID - Basic NFS Security](http://fullyautolinux.blogspot.co.uk/2015/11/nfs-norootsquash-and-suid-basic-nfs.html)
+
 ### Abusing Excessive Groups
 
 Often you'll find that a user has been made a member of a group that it needn't be a part of.  From this you can abuse this to either leak information or compromise the system in unintended ways.

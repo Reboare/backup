@@ -62,8 +62,6 @@ mount 192.168.1.101:/ /tmp/
 
 If you have write privileges you can create files. Test if you can create files, then check with your low-priv shell what user has created that file. If it says that it is the root-user that has created the file it is good news. Then you can create a file and set it with suid-permission from your attacking machine. And then execute it with your low privilege shell.
 
-There are
-
 This code can be compiled and added to the share. Before executing it by your low-priv user make sure to set the suid-bit on it, like this:
 
 ```bash
@@ -83,9 +81,7 @@ int main( int argc, char *argv[] )
 }
 ```
 
-Note that this type of exploit will not always work.  The above sets the uid, but upon actually executing the script, you may find that you still maintain the same privileges.  I believe that bash can drop permissions to what's known as the effective-uid to avoid suid vulnerabilities as above.  In this case, the best bet is to use the below code which just goes overboard.
-
-You could also just generate a binary using msfvenom if desired.
+You could also just generate a binary using msfvenom if desired, but this will require the `PrependSetuid=True` if spawning a `/bin/bash` shell.
 
 ### Abusing Excessive Groups
 
@@ -97,9 +93,7 @@ When first enumerating a group, see what it can access and what special permissi
 find / -group groupname 2>/dev/null
 ```
 
-Secondly, it's probably a good idea to refer to the following
-
-[Debian Recommendations](https://www.gitbook.com/book/reboare/booj-security/edit#)
+Secondly, it's probably a good idea to refer to the [Debian Recommendations](https://wiki.debian.org/SystemGroups).
 
 ##### adm
 
@@ -118,7 +112,7 @@ ubuntu@ubuntu:~$ lxc start test
 ubuntu@ubuntu:~$ lxc exec test bash
 ```
 
-By doing this we effectively have root permissions.  While you won't be able to run arbitrary code on the host, you can write and read any file with root privileges, allowing you to, for example, write a new root password in the /etc/shadow folder.
+While you won't be able to run arbitrary code on the host directly, you can write and read any file with root privileges, allowing you to, for example, write a new root password in the /etc/shadow folder.
 
 The [lxd-alpine-builder](https://github.com/saghul/lxd-alpine-builder) is ideal for engagements, as it's no larger than 4MB.
 
@@ -140,7 +134,7 @@ The disk group gives the user full access to any block devices contained within 
 brw-rw---- 1 root disk 8, 1 Feb  5 13:38 /dev/sda1
 ```
 
-From this we can use debugfs to enumerate the entire disk with effectively root level privileges.  We also have full read-write access to the disk block files.  We can extricate these or write arbitrary data to them.
+From this we can use debugfs to enumerate the entire disk with effectively root level privileges.  We also have full read-write access to the disk block files, so we can extricate these or write arbitrary data to them.  With the disk group, we are effectively root, just in a roundabout way.
 
 ##### video
 

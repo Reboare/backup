@@ -58,9 +58,9 @@ showmount -e 192.168.1.101
 mount 192.168.1.101:/ /tmp/
 ```
 
-#### no-user-squash
+##### no-user-squash
 
-#### no-root-sqash
+##### no\_root\_sqash
 
 If you have write privileges you can create files. Test if you can create files, then check with your low-priv shell what user has created that file. If it says that it is the root-user that has created the file it is good news. Then you can create a file and set it with suid-permission from your attacking machine. And then execute it with your low privilege shell.
 

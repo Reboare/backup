@@ -1,10 +1,10 @@
 # Containerization Technologies
 
+## LXD
+
 ## Docker
 
 ### Docker Socket
-
-
 
 Source: [The Dangers of Docker.sock](https://raesene.github.io/blog/2016/03/06/The-Dangers-Of-Docker.sock/)
 

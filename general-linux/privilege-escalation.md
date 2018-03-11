@@ -1,6 +1,6 @@
 # Linux Privilege Escalation
 
-### Cron Jobs
+### Cronjobs
 
 Viewing `/etc/crontab` is of course the classic.  The cron job format is in the following:
 

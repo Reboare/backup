@@ -2,9 +2,15 @@
 
 ### Cron Jobs
 
-Viewing `/etc/crontab` is of course the classic.
+Viewing `/etc/crontab` is of course the classic.  The cron job format is in the following:
 
-In some situation, cron jobs may be hidden from the user.  Running the below script will parse the active processes every second and output any changes, which may indicate a hidden cron job.
+```
+<minute> <hour> <day of month> <month> <day of week> <user> <command>
+```
+
+Ideally we'll have a vulnerable command being run that we can then exploit.
+
+In some situation, cron jobs may be hidden from all users, in a users own crontab.  Running the below script will parse the active processes every second and output any changes, which may indicate a hidden cron job.
 
 ```bash
 #!/bin/bash
@@ -20,8 +26,6 @@ done
 ```
 
 If the above fails to find anything, then the process may be too short lived to find.  In this case, [Dominic Breuker's pspy](https://github.com/DominicBreuker/pspy) will allow more focused enumeration.
-
-
 
 ### Abusing Excessive Groups
 
@@ -76,7 +80,7 @@ The disk group gives the user full access to any block devices contained within 
 brw-rw---- 1 root disk 8, 1 Feb  5 13:38 /dev/sda1
 ```
 
-From this we can use debugfs to enumerate the entire disk with effectively root level privileges.  We also have full read-write access to the disk block files.  From this we can extricate or write arbitrary data to them.
+From this we can use debugfs to enumerate the entire disk with effectively root level privileges.  We also have full read-write access to the disk block files.  We can extricate these or write arbitrary data to them.
 
 ##### video
 
@@ -113,7 +117,7 @@ height=$(cat /sys/class/graphics/fb0/virtual_size | cut -d, -f2)
 ./raw2png $width $height < /tmp/fb0.raw > /tmp/fb0.png
 ```
 
-This isn't directly exploitable, but utilized correctly can allow you to view a user with physical access' session and potentially leak information this way.  On modern systems this isn't likely exploitable.
+This isn't directly exploitable, but utilized correctly can allow you to view a user with physical access' session and potentially leak information this way.  On modern systems it's a slight pipe dream.
 
 [Alternative Script](ftp://ftp.embeddedarm.com/ts-arm-sbc/ts-7350-linux/samples/bmptoraw.c)
 

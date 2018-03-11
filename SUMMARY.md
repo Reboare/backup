@@ -12,6 +12,7 @@
   * [Esoteric](chapter1/esoteric.md)
 * [Web Applications](web-applications.md)
   * [node.js](web-applications/nodejs.md)
+  * [PHP](web-applications/php.md)
   * [Webshells](web-applications/webshells.md)
 * [Windows Active Directory](windows-active-directory.md)
   * Introduction

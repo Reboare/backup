@@ -2,6 +2,8 @@
 
 ### Cronjobs
 
+Very simply, a cronjob is a task set on a timer, for example every 15 minutes or every 3rd day of the month.  These tasks offer a whole avenue for exploitation as they are often quickly coded and can introduce all sorts of vulnerabilities.
+
 Viewing `/etc/crontab` is of course the classic.  The cron job format is in the following:
 
 ```

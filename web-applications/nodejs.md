@@ -23,7 +23,7 @@ If we then modify the output to call the resulting object as a function we get:
 {"rce":"_$$ND_FUNC$$_function (){eval(<function>)}()"}
 ```
 
-One the object is unserialized, the function will be called.
+Once the object is unserialized, the function will be called.
 
 ### References
 

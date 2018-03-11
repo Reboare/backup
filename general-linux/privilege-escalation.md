@@ -91,11 +91,11 @@ Often you'll find that a user has been made a member of a group that it needn't 
 
 When first enumerating a group, see what it can access and what special permissions may be afforded it as so:
 
-```
+```bash
 find / -group groupname 2>/dev/null
 ```
 
-Secondly, it's probably a good idea to refer to the [Debian Recommendations](https://wiki.debian.org/SystemGroups).
+Secondly, it's probably a good idea to refer to the [Debian Recommendations](https://wiki.debian.org/SystemGroups), and see exactly what each one controls.  I'll explain the most common I've seen and how they might enable you to escalate your privileges.
 
 ##### adm
 
@@ -103,7 +103,7 @@ The admin group, adm, allows the user to view logs in `/var/log`.  Whilst this i
 
 ##### lxd
 
-If a member of the lxd gorup, the user can use this to escalate to root, and potentially escape any containers it is a member of.
+If a member of the lxd group, the user can use this to escalate to root, and potentially escape any containers it is a member of.
 
 ```bash
 ubuntu@ubuntu:~$ lxc init ubuntu:16.04 test -c security.privileged=true 
@@ -114,7 +114,7 @@ ubuntu@ubuntu:~$ lxc start test
 ubuntu@ubuntu:~$ lxc exec test bash
 ```
 
-While you won't be able to run arbitrary code on the host directly, you can write and read any file with root privileges, allowing you to, for example, write a new root password in the /etc/shadow folder.
+While you won't be able to run arbitrary code on the host directly, you can write and read any file with root privileges, allowing you to, for example, write a new root password in the `/etc/shadow` file.
 
 The [lxd-alpine-builder](https://github.com/saghul/lxd-alpine-builder) is ideal for engagements, as it's no larger than 4MB.
 

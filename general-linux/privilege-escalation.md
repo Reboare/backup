@@ -1,5 +1,28 @@
 # Linux Privilege Escalation
 
+### Cron Jobs
+
+Viewing `/etc/crontab` is of course the classic.
+
+In some situation, cron jobs may be hidden from the user.  Running the below script will parse the active processes every second and output any changes, which may indicate a hidden cron job.
+
+```bash
+#!/bin/bash
+IFS=$'\n'
+
+old=$(ps -eo command)
+while true; do
+  new=$(ps -eo command)
+  diff <( echo "$old" ) <( echo "$new" )
+  sleep 1
+  old=$new
+done
+```
+
+If the above fails to find anything, then the process may be too short lived to find.  In this case, [Dominic Breuker's pspy](https://github.com/DominicBreuker/pspy) will allow more focused enumeration.
+
+
+
 ### Abusing Excessive Groups
 
 Often you'll find that a user has been made a member of a group that it needn't be a part of.  From this you can abuse this to either leak information or compromise the system in unintended ways.
@@ -53,7 +76,7 @@ The disk group gives the user full access to any block devices contained within 
 brw-rw---- 1 root disk 8, 1 Feb  5 13:38 /dev/sda1
 ```
 
-From this we can use debugfs to enumerate the entire disk with effectively root level privileges.
+From this we can use debugfs to enumerate the entire disk with effectively root level privileges.  We also have full read-write access to the disk block files.  From this we can extricate or write arbitrary data to them.
 
 ##### video
 
@@ -93,6 +116,4 @@ height=$(cat /sys/class/graphics/fb0/virtual_size | cut -d, -f2)
 This isn't directly exploitable, but utilized correctly can allow you to view a user with physical access' session and potentially leak information this way.  On modern systems this isn't likely exploitable.
 
 [Alternative Script](ftp://ftp.embeddedarm.com/ts-arm-sbc/ts-7350-linux/samples/bmptoraw.c)
-
-
 

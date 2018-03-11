@@ -6,6 +6,7 @@
   * [Privilege Escalation](general-linux/privilege-escalation.md)
 * [General Applications](os-agnostic.md)
   * [Python](os-agnostic/python.md)
+  * Containerization Technologies
 * [Data Exfiltration](chapter1.md)
   * [ICMP](chapter1/icmp.md)
   * [Esoteric](chapter1/esoteric.md)

@@ -12,7 +12,7 @@
   * [Esoteric](chapter1/esoteric.md)
 * [Web Applications](web-applications.md)
   * [node.js](web-applications/nodejs.md)
-  * [Reverse Shells](web-applications/reverse-shells.md)
+  * [Webshells](web-applications/reversebind-shells.md)
 * [Windows Active Directory](windows-active-directory.md)
   * Introduction
   * [Building A Lab](windows-active-directory/creating-a-lab.md)

@@ -58,9 +58,11 @@ showmount -e 192.168.1.101
 mount 192.168.1.101:/ /tmp/
 ```
 
-##### no-user-squash
+To see any available exports locally, the `/etc/exports` file will show all the required information.  There are some options within this, related to each share, that it's important to keep track of.
 
 ##### no\_root\_sqash
+
+Ideally, we'll see that `no_root_squash` or `no_all_squash` is enabled.  When mounting an nsf drive remotely, or as any user, it will under default mount the drive as nfsnobody.  If either of the above options are enabled however, it will allow you to create files as your own UID and GID, allowing you to impersonate users on the remote machine. 
 
 If you have write privileges you can create files. Test if you can create files, then check with your low-priv shell what user has created that file. If it says that it is the root-user that has created the file it is good news. Then you can create a file and set it with suid-permission from your attacking machine. And then execute it with your low privilege shell.
 

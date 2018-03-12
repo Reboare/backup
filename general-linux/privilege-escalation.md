@@ -86,7 +86,8 @@ int main( int argc, char *argv[] )
 You could also just generate a binary using msfvenom if desired, but this will require the `PrependSetuid=True` if spawning a `/bin/bash` shell.
 
 **Further Reading**:  
-[NFS, no\_root\_squash and SUID - Basic NFS Security](http://fullyautolinux.blogspot.co.uk/2015/11/nfs-norootsquash-and-suid-basic-nfs.html)
+[NFS, no\_root\_squash and SUID - Basic NFS Security](http://fullyautolinux.blogspot.co.uk/2015/11/nfs-norootsquash-and-suid-basic-nfs.html)  
+[HackTheBox-Jail](https://reboare.github.io/htb/htb-jail.html#becoming-somebody)
 
 ### Abusing Excessive Groups
 

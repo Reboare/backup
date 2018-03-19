@@ -26,7 +26,7 @@ listen()
 A good option for recent Windows based systems is a modified [Powershell-ICMP-Sender](https://github.com/api0cradle/Powershell-ICMP).
 
 ```powershell
-    $IPAddress = "192.168.0.1"
+    $IPAddress = "192.168.0.5"
     $ICMPClient = New-Object System.Net.NetworkInformation.Ping
     $PingOptions = New-Object System.Net.NetworkInformation.PingOptions
     $PingOptions.DontFragment = $true

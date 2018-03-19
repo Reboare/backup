@@ -48,5 +48,12 @@ A good reference for how these things work is [this Stackoverflow post](https://
 
 ## Pickle Deserialization
 
+**Further Reading**  
+https://blog.nelhage.com/2011/03/exploiting-pickle/  
+https://sensepost.com/blog/2010/playing-with-python-pickle-%231/  
+https://dan.lousqui.fr/explaining-and-exploiting-deserialization-vulnerability-with-python-en.html
 
+## CTF Writeups
+
+These are a collection of CTF writeups that may prove helpful if you find yourself against a Python Jail or environment.
 

@@ -17,6 +17,6 @@
   * [ICMP](chapter1/icmp.md)
   * [Esoteric](chapter1/esoteric.md)
 * [Windows Active Directory](windows-active-directory.md)
-  * Introduction
+  * [Introduction](windows-active-directory/introduction.md)
   * [Building A Lab](windows-active-directory/creating-a-lab.md)
 

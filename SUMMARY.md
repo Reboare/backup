@@ -7,6 +7,7 @@
 * [General Applications](os-agnostic.md)
   * [Python](os-agnostic/python.md)
   * [Oracle Databases](os-agnostic/oracle-databases.md)
+  * [MySQL Databases](os-agnostic/mysql-databases.md)
   * [Containerization Technologies](os-agnostic/containerization-technologies.md)
 * [Web Applications](web-applications.md)
   * [SQL Injection](web-applications/sql-injection.md)

@@ -17,9 +17,5 @@ The SID for Oracle identifies the database instance running.  We can use ODAT to
 ## Further Reading
 
 [Blackhat USA 2009 - Attacking Oracle with the Metasploit Framework](http://www.blackhat.com/presentations/bh-usa-09/GATES/BHUSA09-Gates-OracleMetasploit-SLIDES.pdf) & [Paper](http://www.blackhat.com/presentations/bh-usa-09/GATES/BHUSA09-Gates-OracleMetasploit-PAPER.pdf)  
-
-
-
-
-
+[Oracle DB Vulnerabilities: The Missing Pentester Handbook](https://hackmag.com/uncategorized/looking-into-methods-to-penetrate-oracle-db/)
 

@@ -1,6 +1,6 @@
 # Containerization Technologies
 
-In this chapter I will attempt to define common methods of exploitation for containerization technologies, how they work in terms of privileges and trust and anything that might help in breaking and securing these environments.  Many methods are common to all 
+In this chapter I will attempt to define common methods of exploitation for containerization technologies, how they work in terms of privileges and trust and anything that might help in breaking and securing these environments.  Many methods are common to all forms of container technology, but I will take time to focus on each.
 
 ## LXD
 

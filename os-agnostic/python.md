@@ -42,16 +42,16 @@ root@kali:~/pyexample# python example.py
 Welcome to my Evil Function!
 ```
 
-In module importing, the interpreter will first check the local directory before checking the installed modules.  Consequently, it is more than possible to take over a module even if we don't have write-access to it.
+In module importing, the interpreter will first check the local directory before checking the installed modules.  Consequently, it is more than possible to take over a python scripts execution, even if we don't have write-access to it.
 
 A good reference for how these things work is [this Stackoverflow post](https://stackoverflow.com/questions/31849378/whats-the-order-python-used-to-import-module).
 
 ## Pickle Deserialization
 
 **Further Reading**  
-https://blog.nelhage.com/2011/03/exploiting-pickle/  
-https://sensepost.com/blog/2010/playing-with-python-pickle-%231/  
-https://dan.lousqui.fr/explaining-and-exploiting-deserialization-vulnerability-with-python-en.html
+[https://blog.nelhage.com/2011/03/exploiting-pickle/](https://blog.nelhage.com/2011/03/exploiting-pickle/)  
+[https://sensepost.com/blog/2010/playing-with-python-pickle-%231/](https://sensepost.com/blog/2010/playing-with-python-pickle-%231/)  
+[https://dan.lousqui.fr/explaining-and-exploiting-deserialization-vulnerability-with-python-en.html](https://dan.lousqui.fr/explaining-and-exploiting-deserialization-vulnerability-with-python-en.html)
 
 ## CTF Writeups
 

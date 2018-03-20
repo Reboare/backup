@@ -17,7 +17,7 @@ With weak-comparisons in PHP, such as in the case of the `==` operator:
 
 ## Regular Expressions
 
-For example in `preg_replace`:
+Take, as an example, `preg_replace`:
 
 ```
 preg_replace('/(.*)/', 'A', 'B');
@@ -31,9 +31,7 @@ preg_replace('/(.*)/e', 'phpinfo()', 'B');
 
 The `/e` modifier causes the result of the expression to be evaluated as PHP code, effectively giving you arbitrary command execution.
 
-**References  
+**References    
 **[http://www.madirish.net/402](http://www.madirish.net/402)  
 [https://bitquark.co.uk/blog/2013/07/23/the\_unexpected\_dangers\_of\_preg\_replace](https://bitquark.co.uk/blog/2013/07/23/the_unexpected_dangers_of_preg_replace)
-
-
 

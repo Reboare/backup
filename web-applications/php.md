@@ -23,15 +23,15 @@ Take, as an example, `preg_replace`:
 preg_replace('/(.*)/', 'A', 'B');
 ```
 
-This will just result in the string 'A' being output as everything is replaced in the second string.  If we change the regular expression however as below we can achieve arbitrary command execution:
+This will just result in the string 'A' being output as everything is replaced in the second string.  If we change the regular expression however:
 
 ```
 preg_replace('/(.*)/e', 'phpinfo()', 'B');
 ```
 
-The `/e` modifier causes the result of the expression to be evaluated as PHP code, effectively giving you arbitrary command execution.
+From the above, the second string will be replaced resulting in 'phpinfo\(\)'.  The `/e` modifier appended to the regular expression, causes the result to be evaluated as PHP code, effectively giving you arbitrary command execution.  In this instance we'll be returned the output of `phpinfo()`.
 
-**References    
+**References      
 **[http://www.madirish.net/402](http://www.madirish.net/402)  
 [https://bitquark.co.uk/blog/2013/07/23/the\_unexpected\_dangers\_of\_preg\_replace](https://bitquark.co.uk/blog/2013/07/23/the_unexpected_dangers_of_preg_replace)
 

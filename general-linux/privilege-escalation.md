@@ -46,7 +46,7 @@ If the above fails to find anything, then the process may be too short lived to 
 
 #### Various GNU Tools
 
-It is highly recommended to refer to the bible of Linux wildcard injection: [Unix Wildcards Gone Wild](https://www.defensecode.com/public/DefenseCode_Unix_WildCards_Gone_Wild.txt) if the running processes utilizes wildcards.  This is quite common in CTF's as well as real-world systems.
+It is highly recommended to refer to the bible of Linux wildcard injection: [Unix Wildcards Gone Wild](https://www.defensecode.com/public/DefenseCode_Unix_WildCards_Gone_Wild.txt) if the running processes utilizes wildcards and is a GNU program.  This is quite common in CTF's as well as real-world systems.
 
 #### APT
 
@@ -56,8 +56,8 @@ Take the hypothetical example of an `apt update` command being run on a schedule
 APT::Update::Post-Invoke {"id > /tmp/whoami";};
 ```
 
-**References    
-**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**    
+**References      
+**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**      
 **](https://discourse.osmc.tv/t/run-script-after-update/5734/13)[https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/](https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/)
 
 ### NFS Shares

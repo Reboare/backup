@@ -14,6 +14,7 @@
   * [node.js](web-applications/nodejs.md)
   * [PHP](web-applications/php.md)
   * [Webshells](web-applications/webshells.md)
+* [Network Attacks](network-attacks.md)
 * [Data Exfiltration](chapter1.md)
   * [ICMP](chapter1/icmp.md)
   * [Esoteric](chapter1/esoteric.md)

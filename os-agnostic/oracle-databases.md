@@ -75,9 +75,8 @@ However, do note that `ctxsys` can do the same, but all results are transformed 
 ## Further Reading
 
 [Blackhat USA 2009 - Attacking Oracle with the Metasploit Framework](http://www.blackhat.com/presentations/bh-usa-09/GATES/BHUSA09-Gates-OracleMetasploit-SLIDES.pdf) & [Paper](http://www.blackhat.com/presentations/bh-usa-09/GATES/BHUSA09-Gates-OracleMetasploit-PAPER.pdf)  
-[Oracle DB Vulnerabilities: The Missing Pentester Handbook](https://hackmag.com/uncategorized/looking-into-methods-to-penetrate-oracle-db/)
-
-[http://www.ordba.net/Articles/HardeningOracleDB.htm](http://www.ordba.net/Articles/HardeningOracleDB.htm)
-
-[http://ora-600.pl/art/privilege\_escalation\_2.pdf](http://ora-600.pl/art/privilege_escalation_2.pdf)
+[Oracle DB Vulnerabilities: The Missing Pentester Handbook](https://hackmag.com/uncategorized/looking-into-methods-to-penetrate-oracle-db/)  
+[Hardening Oracle Databases](/h ttp://www.ordba.net/Articles/HardeningOracleDB.htm)  
+[Simple Oracle Privilege Escalation Techniques](http://ora-600.pl/art/oracle_privilege_escalation.pdf)  
+[Simple Oracle Privilege Escalation Techniques 2](http://ora-600.pl/art/privilege_escalation_2.pdf)
 

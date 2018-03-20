@@ -39,7 +39,7 @@ string = SYSTEM:ORACLE8
 ORA-28000: the account is locked
 ```
 
-Lucky for us it will tell us and could be used as a very basic username enumeration method if you're really really desperate.  I'm joking, don't do that.
+Lucky for us it will tell us and could be used as a very basic username enumeration method if you're really really desperate.  I'm joking, don't do that. Do not do that!
 
 The following bash script can perform a dirty manual brute-force using sqlplus, so it's important to adjust your path's in this one accordingly:
 

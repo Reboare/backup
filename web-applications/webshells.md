@@ -2,6 +2,8 @@
 
 ## Javascript
 
+The following can be used as a general platform independent reverse shell:
+
 ```js
 (function(){
     var net = require("net"),

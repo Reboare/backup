@@ -1,5 +1,20 @@
 # Linux Privilege Escalation
 
+When enumerating a Linux system, there are an absolute tonne of scripts which can do all the dirty work for you:
+
+* [LinEnum.sh](https://github.com/rebootuser/LinEnum)
+* [unix-privesc-check](http://pentestmonkey.net/tools/audit/unix-privesc-check)
+* [Linux\_Exploit\_Suggester.pl](/Linux_Exploit_Suggester.pl)
+
+The first thing you should do is run one or more of these, save the output they give you and just read them.  Try to find any obvious things sticking out and don't rush to try kernel exploits even if you see them suggested here.  Kernel exploits, while effective, will frequently crash the system if they fail and the last thing you want on an engagement is to perform a denial-of-service or annoy your fellow CTF players.  
+
+It also can't hurt to double-check by going through the following guides:
+
+* [g0tmi1k - Basic Linux Privilege Escalation](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)
+* [RebootUser - Local Linux Enumeration & Privilege Escalation Cheatsheet](https://www.rebootuser.com/?p=1623)
+
+Put that c0w down and let's see how we can exploit the low hanging fruit.  
+
 ### Cronjobs
 
 Very simply, a cronjob is a task set on a timer, for example every 15 minutes or every 3rd day of the month.  These tasks offer a whole avenue for exploitation as they are often quickly coded and can introduce all sorts of vulnerabilities.
@@ -56,8 +71,8 @@ Take the hypothetical example of an `apt update` command being run on a schedule
 APT::Update::Post-Invoke {"id > /tmp/whoami";};
 ```
 
-**References      
-**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**      
+**References        
+**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**        
 **](https://discourse.osmc.tv/t/run-script-after-update/5734/13)[https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/](https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/)
 
 ### NFS Shares

@@ -43,14 +43,16 @@ or true--
 
 If the backend code is only expecting a single result from the query, a number of the above will fail.  If this is the case then using `LIMIT 0,1` at the end of the expression will reduce the result returned to a single element.  You can then vary the first parameter to enumerate different users.
 
+## Database Enumeration
 
+### MYSQL
+
+```sql
+select column_name from information_schema.columns
+select table_name from information_schema.tables 
+```
 
 ## **Examples**
 
-[HackTheBox - Charon](https://www.youtube.com/watch?v=_csbKuOlmdE)   
-
-
-
-
-
+[HackTheBox - Charon](https://www.youtube.com/watch?v=_csbKuOlmdE)
 

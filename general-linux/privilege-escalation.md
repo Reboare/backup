@@ -44,9 +44,25 @@ done
 
 If the above fails to find anything, then the process may be too short lived to find.  In this case, [Dominic Breuker's pspy](https://github.com/DominicBreuker/pspy) will allow more focused enumeration.  Ideally a writeable file or script may form part of the cron jobs execution.
 
+#### Various GNU Tools
+
 It is highly recommended to refer to the bible of Linux wildcard injection: [Unix Wildcards Gone Wild](https://www.defensecode.com/public/DefenseCode_Unix_WildCards_Gone_Wild.txt) if the running processes utilizes wildcards.  This is quite common in CTF's as well as real-world systems.
 
-### NFS Share
+#### APT
+
+Take the hypothetical example of an `apt update` command being run on a schedule.  It's trivial to inject code to run with this by utilizing this, however you will need write permissions to the `/etc/apt/apt.conf.d` directory.  This is normally root owned, but if you find yourself in the unlikely scenario of being able to write to it, say via social engineering or an arbitrary write, you can use pre and post hooks.  Create a file in this directory called, for example, \`1000-pwned\` and the write your hooks within it:
+
+```
+APT::Update::Post-Invoke {"id > /tmp/whoami";};
+```
+
+**References  
+**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**  
+**](https://discourse.osmc.tv/t/run-script-after-update/5734/13)[https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/](https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/)
+
+#### Node.js
+
+### NFS Shares
 
 If you find that a machine has a NFS share you might be able to use that to escalate privileges.
 
@@ -62,7 +78,7 @@ To see any available exports locally, the `/etc/exports` file will show all the 
 
 ##### no\_root\_sqash
 
-Ideally, we'll see that `no_root_squash` or `no_all_squash` is enabled.  When mounting an nsf drive remotely, or as any user, it will under default mount the drive as nfsnobody.  If either of the above options are enabled however, it will allow you to create files as your own UID and GID, allowing you to impersonate users on the remote machine. 
+Ideally, we'll see that `no_root_squash` or `no_all_squash` is enabled.  When mounting an nsf drive remotely, or as any user, it will under default mount the drive as nfsnobody.  If either of the above options are enabled however, it will allow you to create files as your own UID and GID, allowing you to impersonate users on the remote machine.
 
 If you have write privileges you can create files. Test if you can create files, then check with your low-priv shell what user has created that file. If it says that it is the root-user that has created the file it is good news. Then you can create a file and set it with suid-permission from your attacking machine. And then execute it with your low privilege shell.
 

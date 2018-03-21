@@ -37,7 +37,7 @@ sudo -l
 
 Check any binaries in the above lists, both what they do and the version number.  Many older applications have vulnerabilities that can lead to code execution so that is also worth reading up on.
 
-The following standard Unix tools have many easy ways to perform arbitrary code execution if you find yourself in a situation enabling you to execute them as a privileged user.  
+The following standard Unix tools have many easy ways to perform arbitrary code execution if you find yourself in a situation enabling you to execute them as a privileged user.
 
 ##### awk {#awk}
 
@@ -153,8 +153,8 @@ Take the hypothetical example of an `apt update` command being run on a schedule
 APT::Update::Post-Invoke {"id > /tmp/whoami";};
 ```
 
-**References                        
-**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**                        
+**References                          
+**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**                          
 **](https://discourse.osmc.tv/t/run-script-after-update/5734/13)[https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/](https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/)
 
 ## NFS Shares

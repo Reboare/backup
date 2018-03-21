@@ -20,6 +20,8 @@ It's worth adding the `as sysdba` appended to the above command as your user may
 
 It's highly recommended to use the `all` module when being presented with a new set of credentials, discovered either via brute-force or from another service.  Running this in combination with `--test-modules` will give you a quick overview of what is and isn't possible.  Use this flag with any of the below modules to ensure they work correctly.
 
+If using ODAT, I'd also advise passing the `-vvv` flag once you ensure a module is working as it will allow you to debug the SQL commands, and see how they work behind the scenes.
+
 ## SID Enumeration
 
 The [Oracle System Identifier](https://docs.oracle.com/cloud/latest/db112/CNCPT/startup.htm#CNCPT601) \(SID\) for Oracle identifies the database instance running on the host.  These will be unique for each database instance running, and it's important to identify all SID's available, as different instances can hold different data.

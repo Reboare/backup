@@ -1,5 +1,7 @@
 # Oracle Databases
 
+Oracle databases are not commonly encountered in CTF challenges, but are very common in corporate environments.  Further, [versions &lt;12.1](https://docs.oracle.com/database/121/NTQRF/ap_services.htm#NTQRF700) will by default run with SYSTEM level privileges making these a very desirable attack vector.
+
 Most of the examples here will be utilizing [ODAT ](https://github.com/quentinhardy/odat), the Oracle Database Attacking Tool.  This is because it has a number of exploits and scanners built in, is generally easier to set up and more stable than metasploit, and can use a lot of metasploits wordlists and data.  However, a lot will be repeated from the [wiki](https://github.com/quentinhardy/odat/wiki), so follow that if you want more in depth information.  Follow the guide in the [ODAT readme](https://github.com/quentinhardy/odat) to ensure that your Kali has all the required tools.
 
 In general I'd recommend this over trying to get Metasploit up and running.  However, if you are still keen then follow [this guide](https://github.com/rapid7/metasploit-framework/wiki/How-to-get-Oracle-Support-working-with-Kali-Linux).  For an alternative, see [Andy Gill's guide](https://blog.zsec.uk/msforacle/).
@@ -45,7 +47,7 @@ string = SYSTEM:ORACLE8
 ORA-28000: the account is locked
 ```
 
-Lucky for us it will tell us and could be used as a very basic username enumeration method if you're really really desperate.  I'm joking, don't do that. Do not do that!
+Lucky for us it will tell us and could be used as a very basic username enumeration method if you're really really desperate.  I'm joking, don't do that. Do not do that!  This means you have to be very careful when enumerating database users, and I'd advise sticking to either reused credentials or default password lists specifically targeting Oracle.  
 
 We can again use ODAT to brute-force passwords:
 
@@ -102,8 +104,6 @@ However, do note that `ctxsys` can do the same, but all results are transformed 
 [Alternative Script](https://github.com/r1-/cve-2012-3137)
 
 If the vulnerability is not exploitable, this script will return a different session key on each run?
-
-
 
 ## Privilege Escalation
 

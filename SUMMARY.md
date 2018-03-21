@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
 * [General Windows](general-windows.md)
+  * [MS-SQL Databases](general-windows/ms-sql-databases.md)
 * [General Linux](general-linux.md)
   * [Privilege Escalation](general-linux/privilege-escalation.md)
 * [General Applications](os-agnostic.md)

@@ -1,6 +1,6 @@
 # SQL Injection
 
-This exploit takes advantage of the interaction of a server application with a backend database.
+This exploit takes advantage of the interaction of a server application with a backend database.  If inputs are not correctly sanitised, then an attacker can modify a query sent to a database and use it to perform data exfiltration or break application logic.
 
 ![](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
 
@@ -56,7 +56,10 @@ select column_name from information_schema.columns
 select table_name from information_schema.tables
 ```
 
-## **Examples**
+## Further Reading
 
-[HackTheBox - Charon](https://www.youtube.com/watch?v=_csbKuOlmdE)
+[OWASP - SQL Injection](https://www.owasp.org/index.php/SQL_Injection)  
+[HackTheBox - Charon](https://www.gitbook.com/book/reboare/booj-security/edit#)
+
+
 

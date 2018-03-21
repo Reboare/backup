@@ -56,10 +56,12 @@ select column_name from information_schema.columns
 select table_name from information_schema.tables
 ```
 
+# Tooling
+
+There's not much to mention here other than [SQLMap](https://github.com/sqlmapproject/sqlmap/wiki/Usage), which is quite disgusting in how well it works.  Pointing it at a remote url will cause the application to enumerate and then return any found injection points.
+
 ## Further Reading
 
 [OWASP - SQL Injection](https://www.owasp.org/index.php/SQL_Injection)  
 [HackTheBox - Charon](https://www.gitbook.com/book/reboare/booj-security/edit#)
-
-
 

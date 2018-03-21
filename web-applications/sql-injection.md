@@ -1,5 +1,9 @@
 # SQL Injection
 
+This exploit takes advantage of the interaction of a server application with a backend database.
+
+![](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+
 ## Login Bypasses
 
 For login forms, if they're vulnerable to SQL Injection, the options can range from data exfiltration, to simply bypassing the login forms entirely. Note that the comment type for SQL databases can vary, so it's worth trying both `--` and `#`.  A number of the below are worth trying:
@@ -49,7 +53,7 @@ If the backend code is only expecting a single result from the query, a number o
 
 ```sql
 select column_name from information_schema.columns
-select table_name from information_schema.tables 
+select table_name from information_schema.tables
 ```
 
 ## **Examples**

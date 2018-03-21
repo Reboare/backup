@@ -12,7 +12,7 @@ Assuming a remote TNS listener on port 1521, we can connect to a remote database
 /usr/bin/sqlplus64 username/password@192.168.0.5:1521/ORCL
 ```
 
-It's worth adding the `as sysdba` appended to the above command as your user may already be a database administrator, but the option to connect as one has to be explicitly set.  Alternatively pass the `--sysdba` flag to odat when logging in:
+It's worth adding the `as sysdba` appended to the above command as your user may already be a database administrator, but the option to connect as one has to be explicitly set.  Alternatively pass the `--sysdba` flag to ODAT when logging in:
 
 ```
 ./odat.py all -s 192.168.0.5 -d ORCL -U username -P password --sysdba

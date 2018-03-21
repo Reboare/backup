@@ -17,7 +17,7 @@ Put that c0w down and let's see how we can exploit the low hanging fruit.
 
 ## SUID Applications and Sudo
 
-The holy grail of Linux Privilege Escalation.  This section will describe two attack vectors that are effectively the same, and that is of Linux applications running with excessive privileges.  These can either be via sudo or the SUID/GUID bit, but in effect it's about taking an application that is running as a privileged user and performing code execution.
+The holy grail of Linux Privilege Escalation.  This section will describe two attack vectors that are effectively the same, and that is of Linux applications running with elevated privileges.  These can either be via sudo or the SUID/GUID bit, but in effect it's about taking an application that is running as a privileged user and performing code execution.
 
 To find any SUID or GUID files run the following commands.  Some binaries are moving away from the concept of SUID and towards [capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html), as there's very little reason for many binaries to have full privileged execution:
 
@@ -37,7 +37,7 @@ sudo -l
 
 Check any binaries in the above lists, both what they do and the version number.  Many older applications have vulnerabilities that can lead to code execution so that is also worth reading up on.
 
-The following standard Unix tools have many easy ways to perform arbitrary code execution if you find yourself in a situation enabling you to execute them as a privileged user.
+The following standard Unix tools have many easy ways to perform arbitrary code execution if you find yourself in a situation enabling you to execute them as a privileged user.  
 
 ##### awk {#awk}
 
@@ -153,8 +153,8 @@ Take the hypothetical example of an `apt update` command being run on a schedule
 APT::Update::Post-Invoke {"id > /tmp/whoami";};
 ```
 
-**References                      
-**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**                      
+**References                        
+**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**                        
 **](https://discourse.osmc.tv/t/run-script-after-update/5734/13)[https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/](https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/)
 
 ## NFS Shares

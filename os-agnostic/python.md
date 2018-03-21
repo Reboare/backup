@@ -55,5 +55,5 @@ A good reference for how these things work is [this Stackoverflow post](https://
 
 ## CTF Writeups
 
-These are a collection of CTF writeups that may prove helpful if you find yourself against a Python Jail or environment.
+These are a collection of CTF writeups that may prove helpful if you find yourself against a Python Jail or environment.  Since it's such a popular language a python jail, such as [lshell](https://github.com/ghantoos/lshell), can be a surprisingly common vulnerability.
 

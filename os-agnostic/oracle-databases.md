@@ -31,7 +31,7 @@ The [Oracle System Identifier](https://docs.oracle.com/cloud/latest/db112/CNCPT/
 We can use ODAT to enumerate these SID's and find instances to attack.  These have to be explicity set in the command so it's important that you verify any one's available:
 
 ```
-./odat.py sidguesser  -s 10.10.10.82
+./odat.py sidguesser -s 10.10.10.82
 ```
 
 ## Username Brute-force
@@ -47,7 +47,7 @@ string = SYSTEM:ORACLE8
 ORA-28000: the account is locked
 ```
 
-Lucky for us it will tell us and could be used as a very basic username enumeration method if you're really really desperate.  I'm joking, don't do that. Do not do that!  This means you have to be very careful when enumerating database users, and I'd advise sticking to either reused credentials or default password lists specifically targeting Oracle.  
+Lucky for us it will tell us and could be used as a very basic username enumeration method if you're really really desperate.  I'm joking, don't do that. Do not do that!  This means you have to be very careful when enumerating database users, and I'd advise sticking to either reused credentials or default password lists specifically targeting Oracle.
 
 We can again use ODAT to brute-force passwords:
 

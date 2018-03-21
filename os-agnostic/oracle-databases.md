@@ -18,9 +18,13 @@ It's worth adding the `as sysdba` appended to the above command as your user may
 ./odat.py all -s 192.168.0.5 -d ORCL -U username -P password --sysdba
 ```
 
+It's highly recommended to use the `all` module when being presented with a new set of credentials, discovered either via brute-force or from another service.  Running this in combination with `--test-modules` will give you a quick overview of what is and isn't possible.
+
 ## SID Enumeration
 
-The SID for Oracle identifies the database instance running.  We can use ODAT to enumerate these SID's and find instances to attack.  These have to be explicity set in the command so it's important that you verify any one's available.
+The [Oracle System Identifier](https://docs.oracle.com/cloud/latest/db112/CNCPT/startup.htm#CNCPT601) \(SID\) for Oracle identifies the database instance running on the host.  These will be unique for each database instance running, and it's important to identify all SID's available, as different instances can hold different data.
+
+We can use ODAT to enumerate these SID's and find instances to attack.  These have to be explicity set in the command so it's important that you verify any one's available:
 
 ```
 ./odat.py sidguesser  -s 10.10.10.82
@@ -67,7 +71,7 @@ IFS=$OLDIFS
 
 ## Code Execution
 
-We can use dbmsscheduler in odat to execute arbitrary commands, however the results are not displayed.  You'll have to use one of the many file transfer methods to fetch the output of this command.
+There's unfortunately nothing as trivial as xp\_cmdshell for Oracle databases, but we do have options.  We can use dbmsscheduler in odat to execute arbitrary commands, however the results are not displayed.  You'll have to use one of the many file transfer methods to fetch the output of this command.
 
 ```
 ./odat.py dbmsscheduler -s 192.168.0.5 -d ORCL -U username -P password --sysdba --exec "C:\windows\system32\cmd.exe /c dir C:\\Users\\ > C:\output" -vvv

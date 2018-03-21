@@ -57,3 +57,5 @@ A good reference for how these things work is [this Stackoverflow post](https://
 
 These are a collection of CTF writeups that may prove helpful if you find yourself against a Python Jail or environment.  Since it's such a popular language a python jail, such as [lshell](https://github.com/ghantoos/lshell), can be a surprisingly common vulnerability.
 
+[PlaidCTF - Pyjail with character restrictions](http://wapiflapi.github.io/2013/04/22/plaidctf-pyjail-story-of-pythons-escape/)
+

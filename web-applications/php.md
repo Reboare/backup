@@ -1,4 +1,4 @@
-# PHP
+# PHP-Specific
 
 PHP is an interesting language with a number of quirks.  Since it was designed for simple personal websites and not as a full blown enterprise grade language, this comes as no shock.  Unfortunately, this means older version are easily exposed to a number of obvious exploits.
 
@@ -35,7 +35,7 @@ preg_replace('/(.*)/e', 'phpinfo()', 'B');
 
 From the above, the second string will be replaced resulting in 'phpinfo\(\)'.  The `/e` modifier appended to the regular expression, causes the result to be evaluated as PHP code, effectively giving you arbitrary command execution.  In this instance we'll be returned the output of `phpinfo()`.
 
-**References        
+**References          
 **[http://www.madirish.net/402](http://www.madirish.net/402)  
 [https://bitquark.co.uk/blog/2013/07/23/the\_unexpected\_dangers\_of\_preg\_replace](https://bitquark.co.uk/blog/2013/07/23/the_unexpected_dangers_of_preg_replace)
 

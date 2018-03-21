@@ -66,7 +66,7 @@ IFS=,
 while read comment number username password hash comment
 do
  echo "string = $username:$password"
- /usr/lib/oracle/12.2/client64/bin/sqlplus -L $username\/$password\@192.168.0.5:1521\/ORCL | cut -d$'\n' -f 7 
+ /usr/bin/sqlplus64 -L $username\/$password\@192.168.0.5:1521\/ORCL | cut -d$'\n' -f 7 
 done < $INPUT
 IFS=$OLDIFS
 ```

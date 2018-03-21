@@ -97,6 +97,10 @@ However, do note that `ctxsys` can do the same, but all results are transformed 
 
 [Alternative Script \(untested\)](https://github.com/r1-/cve-2012-3137)
 
+## Privilege Escalation
+
+
+
 ## Further Reading
 
 [Blackhat USA 2009 - Attacking Oracle with the Metasploit Framework](http://www.blackhat.com/presentations/bh-usa-09/GATES/BHUSA09-Gates-OracleMetasploit-SLIDES.pdf) & [Paper](http://www.blackhat.com/presentations/bh-usa-09/GATES/BHUSA09-Gates-OracleMetasploit-PAPER.pdf)  

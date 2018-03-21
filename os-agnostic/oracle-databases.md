@@ -18,7 +18,7 @@ It's worth adding the `as sysdba` appended to the above command as your user may
 ./odat.py all -s 192.168.0.5 -d ORCL -U username -P password --sysdba
 ```
 
-It's highly recommended to use the `all` module when being presented with a new set of credentials, discovered either via brute-force or from another service.  Running this in combination with `--test-modules` will give you a quick overview of what is and isn't possible.
+It's highly recommended to use the `all` module when being presented with a new set of credentials, discovered either via brute-force or from another service.  Running this in combination with `--test-modules` will give you a quick overview of what is and isn't possible.  Use this flag with any of the below modules to ensure they work correctly.
 
 ## SID Enumeration
 
@@ -71,7 +71,7 @@ IFS=$OLDIFS
 
 ## Code Execution
 
-There's unfortunately nothing as trivial as xp\_cmdshell for Oracle databases, but we do have options.  We can use dbmsscheduler in odat to execute arbitrary commands, however the results are not displayed.  You'll have to use one of the many file transfer methods to fetch the output of this command.
+There's unfortunately nothing as trivial as `xp_cmdshell` for Oracle databases, but we do have options.  We can use `dbmsscheduler` in odat to execute arbitrary commands, however the results are not displayed.  You'll have to use one of the many file transfer methods to fetch the output of this command.
 
 ```
 ./odat.py dbmsscheduler -s 192.168.0.5 -d ORCL -U username -P password --sysdba --exec "C:\windows\system32\cmd.exe /c dir C:\\Users\\ > C:\output" -vvv
@@ -98,8 +98,6 @@ However, do note that `ctxsys` can do the same, but all results are transformed 
 [Alternative Script \(untested\)](https://github.com/r1-/cve-2012-3137)
 
 ## Privilege Escalation
-
-
 
 ## Further Reading
 

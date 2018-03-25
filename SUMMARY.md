@@ -15,6 +15,7 @@
 * [Web Applications](web-applications.md)
   * [SQL Injection](web-applications/sql-injection.md)
   * [Server Side Template Injection](web-applications/template-injection.md)
+  * [File Upload Filters](web-applications/file-upload-filters.md)
   * [node.js-Specific](web-applications/nodejs.md)
   * [PHP-Specific](web-applications/php.md)
   * [Webshells](web-applications/webshells.md)

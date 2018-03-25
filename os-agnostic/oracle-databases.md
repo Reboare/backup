@@ -6,6 +6,8 @@ Most of the examples here will be utilizing [ODAT ](https://github.com/quentinha
 
 In general I'd recommend this over trying to get Metasploit up and running.  However, if you are still keen then follow [this guide](https://github.com/rapid7/metasploit-framework/wiki/How-to-get-Oracle-Support-working-with-Kali-Linux).  For an alternative, see [Andy Gill's guide](https://blog.zsec.uk/msforacle/).
 
+Also see: [oracle-instantclient](https://github.com/bumpx/oracle-instantclient)
+
 ## Connecting to the Database
 
 Assuming a remote TNS listener on port 1521, we can connect to a remote database as follows:

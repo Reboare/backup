@@ -18,6 +18,8 @@ nmap -sV -sC <target> -p <port>
 
 Passwords in VNC are obfuscated but not heavily encrypted.  We can use a tool like [**vncpwd**](https://github.com/jeroennijhof/vncpwd) to crack any hashes we find.
 
+## Further Reading
+
 # 
 
 

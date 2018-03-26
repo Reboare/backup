@@ -1,6 +1,6 @@
 # VNC
 
-# Connecting to VNC
+### Connecting to VNC
 
 ```
 vncviewer <remote ip>:<desktop>
@@ -14,11 +14,11 @@ You can use the following command to see if the VNC session has an authenticatio
 nmap -sV -sC <target> -p <port>
 ```
 
-# Cracking Passwords
+### Cracking Passwords
 
 Passwords in VNC are obfuscated but not heavily encrypted.  We can use a tool like [**vncpwd**](https://github.com/jeroennijhof/vncpwd) to crack any hashes we find.
 
-## Further Reading
+### Further Reading
 
 # 
 

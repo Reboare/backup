@@ -153,9 +153,23 @@ Take the hypothetical example of an `apt update` command being run on a schedule
 APT::Update::Post-Invoke {"id > /tmp/whoami";};
 ```
 
-**References                            
-**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**                            
+**References                              
+**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**                              
 **](https://discourse.osmc.tv/t/run-script-after-update/5734/13)[https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/](https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/)
+
+## Internal Ports
+
+One critical task that you'll need to perform is querying for internal ports that aren't running externally.  Ocassionally these will be running with either escalated privileges or will allow you to pivot to another user who might allow you to find another point to escalate.  The classic is mysql, as this will often be running internally on 3306 but not externally.
+
+Querying can be performed in the following manner:
+
+```
+netstat -tulpn    # net-tools
+ss -tulpn         # most modern installations
+sockstat -4       # freebsd
+```
+
+Then using either an SSH tunnel or a meterpreter instance, we can port-forward this to our attacking machine.
 
 ## NFS Shares
 

@@ -32,4 +32,5 @@
   * [Padding Oracle](cryptography/padding-oracle.md)
 * [Binary Exploitation](binary-exploitation.md)
   * [Linux](binary-exploitation/linux.md)
+  * Windows
 

@@ -153,8 +153,8 @@ Take the hypothetical example of an `apt update` command being run on a schedule
 APT::Update::Post-Invoke {"id > /tmp/whoami";};
 ```
 
-**References                              
-**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**                              
+**References                                
+**[https://discourse.osmc.tv/t/run-script-after-update/5734/13**                                
 **](https://discourse.osmc.tv/t/run-script-after-update/5734/13)[https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/](https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/)
 
 ## Internal Ports

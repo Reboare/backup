@@ -30,6 +30,7 @@
   * [Building A Lab](windows-active-directory/creating-a-lab.md)
 * [Cryptography](cryptography.md)
   * [Padding Oracle](cryptography/padding-oracle.md)
+  * [Cryptanalysis](cryptography/cryptanalysis.md)
 * [Binary Exploitation](binary-exploitation.md)
   * [Linux](binary-exploitation/linux.md)
   * Windows

@@ -21,6 +21,7 @@
   * [PHP-Specific](web-applications/php.md)
   * [Coldfusion](web-applications/coldfusion.md)
   * [Webshells](web-applications/webshells.md)
+  * [WAF Bypass](web-applications/waf-bypass.md)
 * [Network Attacks](network-attacks.md)
 * [Data Exfiltration](chapter1.md)
   * [ICMP](chapter1/icmp.md)

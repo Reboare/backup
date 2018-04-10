@@ -29,6 +29,7 @@
 * [Windows Active Directory](windows-active-directory.md)
   * [Introduction](windows-active-directory/introduction.md)
   * [Building A Lab](windows-active-directory/creating-a-lab.md)
+  * [Kerberoast](windows-active-directory/kerberoast.md)
 * [Cryptography](cryptography.md)
   * [Padding Oracle](cryptography/padding-oracle.md)
   * [Cryptanalysis](cryptography/cryptanalysis.md)

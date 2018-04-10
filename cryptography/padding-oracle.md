@@ -10,7 +10,7 @@ A padding oracle attack, attacks the general decryption mechanism used by a remo
 
 ### Padbuster {#padbuster}
 
-A tool called[padbuster](https://github.com/GDSSecurity/PadBuster), is incredibly effective at exploiting these vulnerabilities automatically. The following example will decrypt a base64 encoded ciphertext using the padding oracle attack.
+A tool called [padbuster](https://github.com/GDSSecurity/PadBuster), is incredibly effective at exploiting these vulnerabilities automatically. The following example will decrypt a base64 encoded ciphertext using the padding oracle attack.
 
 ```
 padbuster <url> <codetodecrypt> <blocksize> -encoding 0  -cookies <cookies>  -veryverbose

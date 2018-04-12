@@ -36,4 +36,5 @@
 * [Binary Exploitation](binary-exploitation.md)
   * [Linux](binary-exploitation/linux.md)
   * Windows
+* [Smart Contracts](smart-contracts.md)
 

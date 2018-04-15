@@ -2,7 +2,7 @@
 
 ## Authentication Cookie RCE
 
-If the authentication cookie for an erlang node is leaked, then you can 
+If the authentication cookie for an Erlang node is leaked, then you can take advantage of this to achieve RCE.  Typically this will be via local port tcp/4369.  The following PoC connects to a local node with a cookie of cookieval, and then spawns a command on an adjacent node with the same cookie value.  If the adjacent node is run by `mainuser` then we achieve privilege escalation.
 
 ```
 otheruser@booj:/$ export HOME=/tmp

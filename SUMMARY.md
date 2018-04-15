@@ -37,6 +37,6 @@
   * [Cryptanalysis](cryptography/cryptanalysis.md)
 * [Binary Exploitation](binary-exploitation.md)
   * [Linux](binary-exploitation/linux.md)
-  * Windows
+  * [Windows](binary-exploitation/windows.md)
 * [Smart Contracts](smart-contracts.md)
 

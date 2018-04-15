@@ -1,4 +1,6 @@
-# Python
+# Python 
+
+Python is a language powering an extraordinary number of applications, but here we're just going to focus on very common coding errors you're likely to find.  These can be useful in cases of both web applications as well as local and exploiting any of these is incredibly context specific.
 
 ## python2 input
 
@@ -48,7 +50,7 @@ A good reference for how these things work is [this Stackoverflow post](https://
 
 ## Pickle Deserialization
 
-During pickle deserialization, it is possible to create a situation where arbitrary code is executed.  This is because the `reduce` method defines how the object itself is de-serialized, and so will be executed when `pickle.loads` is called. 
+During pickle deserialization, it is possible to create a situation where arbitrary code is executed.  This is because the `reduce` method defines how the object itself is de-serialized, and so will be executed when `pickle.loads` is called.
 
 ```py
 import subprocess

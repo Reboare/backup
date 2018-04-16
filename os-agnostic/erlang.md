@@ -121,8 +121,9 @@ drwxr-xr-x 2 root root 4096 Apr 10 01:39 .tmp_dir531002228620
 -rw-r--r-- 1 root root   10 Apr 16 20:23 baz@baz
 -rw-r--r-- 1 root root   10 Apr 16 20:18 foo@foo
 -rw-r--r-- 1 root root   10 Apr 16 20:15 secret
-
 ```
+
+Whilst this may not be a particularly surprising result for Erlang developers, it does represent a quite frightening realization that a single node being compromised will indeed compromise the entire network.
 
 **References**
 

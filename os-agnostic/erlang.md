@@ -23,11 +23,13 @@ spawn(couchdb@localhost, fun() -> io:format("~p~n", [os:cmd('/usr/bin/id')]) end
 
 [https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/](https://legacy.gitbook.com/book/reboare/booj-security/edit#)
 
+## Node Poisoning
+
+Connecting to an erlang cluster can potentially be dangerous.  The key matter of
+
 ## Cookie Bruteforcing
 
 **Further Reading**
-
-
 
 [https://www.broot.ca/erlang-remsh-is-dangerous](https://www.broot.ca/erlang-remsh-is-dangerous)
 

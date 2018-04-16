@@ -39,13 +39,19 @@ spawn(node@localhost, fun() -> io:format("~p~n", [os:cmd('/usr/bin/id')]) end).
 
 ## Node Poisoning
 
-Connecting to an erlang cluster can potentially be dangerous.  The key matter of
+Connecting to an Erlang cluster can potentially be dangerous.  We've mentioned the dangers of arbitrary command execution on adjacent nodes, but this also extends to your workstation upon connecting to a cluster.  In Alex Weber's [Erlang's remsh is dangerous](https://www.broot.ca/erlang-remsh-is-dangerous), we are given a method to compromise an active workstation connecting to a cluster.
+
+If, for example, we were to take control of a single node within a cluster, not only do we have arbitrary command execution over it, but we would also be able to infect any new nodes which join the cluster automatically.
+
+**References**
+
+[Erlang's remsh is dangerous](https://www.broot.ca/erlang-remsh-is-dangerous)
 
 ## Cookie Bruteforcing
 
 **Further Reading**
 
-[https://www.broot.ca/erlang-remsh-is-dangerous](https://www.broot.ca/erlang-remsh-is-dangerous)
+
 
 [https://github.com/msantos/spoofed](https://github.com/msantos/spoofed)
 

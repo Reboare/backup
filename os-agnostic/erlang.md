@@ -32,6 +32,11 @@ spawn(node@localhost, fun() -> io:format("~p~n", [os:cmd('/usr/bin/id')]) end).
 [https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/](https://legacy.gitbook.com/book/reboare/booj-security/edit#)  
 [http://blog.listincomprehension.com/2010/03/spoofing-erlang-distribution-protocol.html](https://legacy.gitbook.com/book/reboare/booj-security/edit#)
 
+**Further Reading**
+
+[Who wants cookies?](https://blog.voltone.net/post/4)  
+[Unauthorized Erlang](https://blog.voltone.net/post/12)
+
 ## Node Poisoning
 
 Connecting to an erlang cluster can potentially be dangerous.  The key matter of
@@ -42,13 +47,7 @@ Connecting to an erlang cluster can potentially be dangerous.  The key matter of
 
 [https://www.broot.ca/erlang-remsh-is-dangerous](https://www.broot.ca/erlang-remsh-is-dangerous)
 
-
-
 [https://github.com/msantos/spoofed](https://github.com/msantos/spoofed)
-
-[https://blog.voltone.net/post/4](https://blog.voltone.net/post/4)
-
-[https://blog.voltone.net/post/12](https://blog.voltone.net/post/12)
 
 [https://www.youtube.com/watch?v=42k70Y-yTYY](https://www.youtube.com/watch?v=42k70Y-yTYY)
 

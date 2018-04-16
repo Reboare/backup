@@ -23,9 +23,9 @@ spawn(couchdb@localhost, fun() -> io:format("~p~n", [os:cmd('/usr/bin/id')]) end
 
 [https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/](https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/)
 
-https://www.broot.ca/erlang-remsh-is-dangerous
+[https://www.broot.ca/erlang-remsh-is-dangerous](https://www.broot.ca/erlang-remsh-is-dangerous)
 
-http://blog.listincomprehension.com/2010/03/spoofing-erlang-distribution-protocol.html
+[http://blog.listincomprehension.com/2010/03/spoofing-erlang-distribution-protocol.html](http://blog.listincomprehension.com/2010/03/spoofing-erlang-distribution-protocol.html)
 
-
+https://github.com/msantos/spoofed
 

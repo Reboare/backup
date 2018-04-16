@@ -132,6 +132,8 @@ Whilst this may not be a particularly surprising result for Erlang developers, i
 
 ## Cookie Bruteforcing
 
+The code for cookie creation lies in [lib/kernel/src/auth.erl](https://github.com/erlang/otp/blob/master/lib/kernel/src/auth.erl).
+
 **Further Reading**
 
 [https://github.com/msantos/spoofed](https://github.com/msantos/spoofed)

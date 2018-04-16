@@ -27,5 +27,17 @@ spawn(couchdb@localhost, fun() -> io:format("~p~n", [os:cmd('/usr/bin/id')]) end
 
 [http://blog.listincomprehension.com/2010/03/spoofing-erlang-distribution-protocol.html](http://blog.listincomprehension.com/2010/03/spoofing-erlang-distribution-protocol.html)
 
-https://github.com/msantos/spoofed
+[https://github.com/msantos/spoofed](https://github.com/msantos/spoofed)
+
+https://blog.voltone.net/post/4
+
+https://blog.voltone.net/post/12
+
+https://www.youtube.com/watch?v=42k70Y-yTYY
+
+https://conference.hitb.org/hitbsecconf2017ams/materials/D2T4%20-%20Don%20Bailey%20-%20Unauthorized%20Erlang.pdf
+
+
+
+
 

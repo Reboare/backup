@@ -136,6 +136,8 @@ The code for cookie creation lies in [lib/kernel/src/auth.erl](https://github.co
 
 **Further Reading**
 
+[NCC Group - Erlang Security 101](https://www.nccgroup.trust/globalassets/our-research/uk/whitepapers/2014/erlang_security_101_v1-0.pdf)
+
 [https://github.com/msantos/spoofed](https://github.com/msantos/spoofed)
 
 [https://www.youtube.com/watch?v=42k70Y-yTYY](https://www.youtube.com/watch?v=42k70Y-yTYY)

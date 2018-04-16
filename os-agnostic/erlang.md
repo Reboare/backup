@@ -4,7 +4,7 @@
 
 Authentication between Erlang nodes is rather unique to anything I've seen elsewhere, and it all happens through the magic of cookies.  The [documentation ](http://erlang.org/doc/reference_manual/distributed.html)sums this up well:
 
-> Authentication determines which nodes are allowed to communicate with each other. In a network of different Erlang nodes, it is built into the system at the lowest possible level. Each node has its own  \*\*magic cookie\*\*, which is an Erlang atom.
+> Authentication determines which nodes are allowed to communicate with each other. In a network of different Erlang nodes, it is built into the system at the lowest possible level. Each node has its own **magic cookie**, which is an Erlang atom.
 >
 > When a node tries to connect to another node, the magic cookies are compared. If they do not match, the connected node rejects the connection.
 

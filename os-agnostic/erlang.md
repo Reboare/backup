@@ -12,7 +12,7 @@ If the authentication cookie is leaked then theoretically we can abuse the natur
 
 Of course this only assumes you can leak the cookie.  There are a number of methods, such as in the event of a lower privileged user seeing the `-setcookie` flag in a process list, a weak cookie or a simple brute-force.  The topic of brute-forcing is discussed by Daniel Mende in [Erlang distribution RCE and a cookie bruteforcer](https://insinuator.net/2017/10/erlang-distribution-rce-and-a-cookie-bruteforcer/), as well as by Michael Santos in [Spoofing the Erlang Distribution Protocol](http://blog.listincomprehension.com/2010/03/spoofing-erlang-distribution-protocol.html).
 
-If we have access to the cookie and can connect to a node's epmd port \(usually tcp/4369\), we can achieve command execution in the following manner:
+If we have access to the cookie and can connect to a node's epmd port \(usually tcp/4369\), we can spawn our own node and achieve command execution in the following manner:
 
 ```
 otheruser@pc:/$ erl -sname booj -setcookie cookieval -remsh node@localhost

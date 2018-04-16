@@ -43,7 +43,7 @@ Connecting to an Erlang cluster can potentially be dangerous.  We've mentioned t
 
 If, for example, we were to take control of a single node within a cluster, not only do we have arbitrary command execution over it, but we would also be able to infect any new nodes which join the cluster automatically.
 
-I've tested this out using three docker containers.
+I've tested this out using three docker containers:
 
 **bar@bar**
 

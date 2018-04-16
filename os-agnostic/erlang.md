@@ -46,13 +46,13 @@ If, for example, we were to take control of a single node within a cluster, not 
 I've tested this out using three docker containers.
 
 ```
-https://stackoverflow.com/questions/45057343/connect-erlang-nodes-on-docker
+
 ```
 
 **References**
 
 [Erlang's remsh is dangerous](https://www.broot.ca/erlang-remsh-is-dangerous)  
-https://stackoverflow.com/questions/45057343/connect-erlang-nodes-on-docker
+[https://stackoverflow.com/questions/45057343/connect-erlang-nodes-on-docker](https://stackoverflow.com/questions/45057343/connect-erlang-nodes-on-docker)
 
 ## Cookie Bruteforcing
 

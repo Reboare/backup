@@ -79,8 +79,7 @@ root@foo:/# erl -sname foo -setcookie example
 Erlang/OTP 19 [erts-8.3.5.4] [source] [64-bit] [async-threads:10] [hipe] [kernel-poll:false]
 
 Eshell V8.3.5.4  (abort with ^G)
-(foo@foo)1> net_adm:ping(bar@bar)
-(foo@foo)1> .
+(foo@foo)1> net_adm:ping(bar@bar).
 pong
 ```
 
